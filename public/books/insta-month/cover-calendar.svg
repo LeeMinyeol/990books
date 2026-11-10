@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Pretendard, 'Malgun Gothic', sans-serif">
+  <rect width="800" height="500" fill="#fff5f7"/>
+  <rect x="40" y="30" width="720" height="440" rx="20" fill="#fff" stroke="#f3c4d0"/>
+  <text x="70" y="78" font-size="24" font-weight="800" fill="#1f1f1f">11월 콘텐츠 계획표</text>
+  <rect x="640" y="56" width="90" height="30" rx="15" fill="#E8436E"/>
+  <text x="685" y="77" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">30일 완성</text>
+  <g font-size="13" font-weight="700" fill="#9a9a9a" text-anchor="middle">
+    <text x="108" y="118">월</text><text x="206" y="118">화</text><text x="304" y="118">수</text><text x="402" y="118">목</text><text x="500" y="118">금</text><text x="598" y="118">토</text><text x="696" y="118">일</text>
+  </g>
+  <g>
+    <!-- 4 rows x 7 cols of day cells -->
+    <g fill="#fff0f4" stroke="#f3c4d0">
+      <rect x="62" y="130" width="92" height="70" rx="10"/><rect x="160" y="130" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="258" y="130" width="92" height="70" rx="10"/><rect x="356" y="130" width="92" height="70" rx="10"/><rect x="454" y="130" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="552" y="130" width="92" height="70" rx="10"/><rect x="650" y="130" width="92" height="70" rx="10"/>
+      <rect x="62" y="210" width="92" height="70" rx="10"/><rect x="160" y="210" width="92" height="70" rx="10"/><rect x="258" y="210" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="356" y="210" width="92" height="70" rx="10"/><rect x="454" y="210" width="92" height="70" rx="10"/><rect x="552" y="210" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="650" y="210" width="92" height="70" rx="10"/>
+      <rect x="62" y="290" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="160" y="290" width="92" height="70" rx="10"/><rect x="258" y="290" width="92" height="70" rx="10"/><rect x="356" y="290" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="454" y="290" width="92" height="70" rx="10"/><rect x="552" y="290" width="92" height="70" rx="10"/><rect x="650" y="290" width="92" height="70" rx="10"/>
+      <rect x="62" y="370" width="92" height="70" rx="10"/><rect x="160" y="370" width="92" height="70" rx="10"/><rect x="258" y="370" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="356" y="370" width="92" height="70" rx="10"/><rect x="454" y="370" width="92" height="70" rx="10"/><rect x="552" y="370" width="92" height="70" rx="10" fill="#E8436E" stroke="#E8436E"/><rect x="650" y="370" width="92" height="70" rx="10"/>
+    </g>
+    <g font-size="12" font-weight="700" fill="#E8436E">
+      <text x="70" y="148">1</text><text x="266" y="228">17</text><text x="70" y="308">22</text>
+    </g>
+  </g>
+  <g font-size="13" font-weight="700" fill="#fff" text-anchor="middle">
+    <text x="206" y="170">카드뉴스</text><text x="500" y="170">릴스</text><text x="304" y="250">카드뉴스</text><text x="598" y="250">릴스</text><text x="108" y="330">카드뉴스</text><text x="402" y="330">릴스</text><text x="304" y="410">카드뉴스</text><text x="598" y="410">릴스</text>
+  </g>
+  <g font-size="12" fill="#6b6b6b" text-anchor="middle">
+    <text x="108" y="170">사진</text><text x="402" y="170">사진</text><text x="696" y="170">사진</text>
+  </g>
+</svg>

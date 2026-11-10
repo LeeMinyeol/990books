@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --accent: #e8436e;
+  --title-font: var(--font-blackhan);
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-soft: color-mix(in srgb, var(--accent) 9%, white);
+  --color-ink: #111111;
+  --color-sub: #6b6b6b;
+  --color-line: #e5e5e5;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-title: var(--title-font), "Pretendard Variable", sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #171717;
+  font-family: var(--font-sans);
+  word-break: keep-all;
+}
+
+::selection {
+  background: #111111;
+  color: #fff;
+}
+
+/* 홈 캐러셀: 가로 스크롤은 쓰되 스크롤 막대는 숨긴다 */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* 장 넘김: 짧은 이동 + 페이드만 사용해 모바일 성능을 지킨다 */
+@keyframes in-next {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes in-prev {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  0% { transform: scale(0.9); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+@keyframes stamp {
+  0% { opacity: 0; transform: scale(2.4) rotate(-24deg); }
+  70% { opacity: 1; transform: scale(0.94) rotate(-12deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-12deg); }
+}
+@keyframes lock {
+  0%, 82%, 100% { transform: rotate(0); }
+  86% { transform: rotate(-10deg); }
+  90% { transform: rotate(9deg); }
+  94% { transform: rotate(-6deg); }
+  98% { transform: rotate(3deg); }
+}
+@keyframes shine {
+  0% { transform: translateX(-120%); }
+  60%, 100% { transform: translateX(120%); }
+}
+
+.animate-in-next { animation: in-next 0.28s ease-out; }
+.animate-in-prev { animation: in-prev 0.28s ease-out; }
+.animate-pop { animation: pop 0.3s ease-out; }
+.animate-stamp { animation: stamp 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) 0.25s both; }
+.animate-lock { animation: lock 3.2s ease-in-out infinite; transform-origin: 50% 80%; }
+.animate-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, color-mix(in srgb, var(--accent) 14%, transparent), transparent);
+  animation: shine 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in-next, .animate-in-prev, .animate-pop, .animate-stamp, .animate-lock,
+  .animate-shine::before { animation: none; }
+  .animate-stamp { opacity: 1; transform: rotate(-12deg); }
+}

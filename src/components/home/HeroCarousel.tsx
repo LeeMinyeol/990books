@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState, type CSSProperties } from "react";
+import { useRef, useState } from "react";
 import type { ShelfItem } from "@/lib/book";
+import { KINDS, formatDate, formatPrice } from "@/lib/pricing";
 import BookCover from "./BookCover";
-import BookFacts from "./BookFacts";
+import SoonButton from "./SoonButton";
 
 function Arrow({ dir }: { dir: "prev" | "next" }) {
   return (
@@ -14,11 +15,74 @@ function Arrow({ dir }: { dir: "prev" | "next" }) {
   );
 }
 
-/** 추천 책 캐러셀. 자동으로 넘기지 않고 화살표·스와이프·키보드로만 넘긴다 */
+function Check() {
+  return (
+    <svg viewBox="0 0 20 20" className="h-5 w-5 shrink-0" aria-hidden>
+      <circle cx="10" cy="10" r="10" className="fill-brand" />
+      <path d="m5.5 10.2 3 3 6-6.4" fill="none" className="stroke-on-brand" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function Slide({ item, first }: { item: ShelfItem; first: boolean }) {
+  const kind = item.kind ? KINDS[item.kind] : null;
+  const meta = [
+    item.minutes ? `따라 하는 데 ${item.minutes}분` : null,
+    item.extraCost ? `추가 비용 ${item.extraCost}` : null,
+    item.writtenAt ? `${formatDate(item.writtenAt)} 작성` : null,
+  ].filter(Boolean);
+
+  return (
+    <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-9 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:px-8 lg:py-16">
+      <BookCover
+        item={item}
+        sizes="(min-width: 1024px) 540px, 100vw"
+        priority={first}
+        className="rounded-3xl lg:order-last"
+      />
+      <div>
+        <p className="type-label text-sub">{[item.category, item.topic].filter(Boolean).join(", ")}</p>
+        <h2 className="type-display mt-3 text-balance">{item.title}</h2>
+        <p className="type-body mt-4 text-sub">{item.summary}</p>
+        {item.includes && (
+          <ul className="type-body mt-5 flex flex-col gap-2">
+            {item.includes.map((line) => (
+              <li key={line} className="flex items-center gap-2.5">
+                <Check />
+                {line}
+              </li>
+            ))}
+          </ul>
+        )}
+        {meta.length > 0 && <p className="type-small mt-4 text-sub">{meta.join(", ")}</p>}
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Link
+            href={`/books/${item.slug}`}
+            className="type-label flex min-h-13 items-center rounded-full bg-brand px-7 text-on-brand outline-offset-2 transition hover:brightness-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-ink"
+          >
+            앞 3장 무료로 보기
+          </Link>
+          {kind && (
+            <SoonButton
+              align="left"
+              message="결제는 준비 중이에요"
+              className="type-label min-h-13 rounded-full border-2 border-ink px-7 text-ink outline-offset-2 transition hover:bg-ink hover:text-white active:scale-95 focus-visible:outline-2 focus-visible:outline-ink"
+            >
+              전체 보기 {formatPrice(kind.price)}
+            </SoonButton>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** 대표 책. 공개된 책이 2권 이상이면 화살표·스와이프·키보드로 넘긴다(자동 넘김 없음) */
 export default function HeroCarousel({ items }: { items: ShelfItem[] }) {
   const track = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const total = items.length;
+  if (total === 0) return null;
 
   function go(to: number) {
     const el = track.current;
@@ -34,14 +98,21 @@ export default function HeroCarousel({ items }: { items: ShelfItem[] }) {
     setIndex(Math.round(el.scrollLeft / el.clientWidth));
   }
 
+  if (total === 1) {
+    return (
+      <section aria-label="대표 책">
+        <Slide item={items[0]} first />
+      </section>
+    );
+  }
+
   const arrowClass =
-    "pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-ink bg-white text-ink outline-offset-2 transition hover:bg-ink hover:text-white active:scale-95 disabled:pointer-events-none disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-ink";
+    "flex h-11 w-11 items-center justify-center rounded-full border border-ink bg-white text-ink outline-offset-2 transition hover:bg-ink hover:text-white active:scale-95 disabled:pointer-events-none disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-ink";
 
   return (
     <section
       aria-roledescription="carousel"
-      aria-label="추천 책"
-      className="relative"
+      aria-label="대표 책"
       onKeyDown={(e) => {
         if (e.key === "ArrowRight") go(index + 1);
         if (e.key === "ArrowLeft") go(index - 1);
@@ -59,53 +130,23 @@ export default function HeroCarousel({ items }: { items: ShelfItem[] }) {
             role="group"
             aria-roledescription="slide"
             aria-label={`${i + 1} / ${total}`}
-            style={item.accent ? ({ "--accent": item.accent } as CSSProperties) : undefined}
-            className={`w-full shrink-0 snap-start ${item.status === "coming" ? "bg-neutral-100" : "bg-accent-soft"}`}
+            className="w-full shrink-0 snap-start"
           >
-            <div className="mx-auto grid max-w-6xl items-center gap-7 px-5 pb-24 pt-8 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-24 lg:pt-14">
-              <div className="relative">
-                <BookCover item={item} sizes="(min-width: 1024px) 544px, 100vw" priority={i === 0} />
-                {item.status === "open" && (
-                  <span className="absolute -bottom-5 -right-2 flex h-20 w-20 -rotate-12 items-center justify-center rounded-full border-[3px] border-accent bg-white font-title text-xl text-accent lg:-bottom-6 lg:-right-6 lg:h-24 lg:w-24 lg:text-2xl">
-                    990원
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-col items-start gap-4">
-                <h2 className="text-balance font-title text-3xl leading-tight text-ink lg:text-[2.75rem] lg:leading-[1.2]">
-                  {item.title}
-                </h2>
-                <p className="text-base text-ink/80 lg:text-lg">{item.summary}</p>
-                <BookFacts item={item} />
-                {item.status === "open" && (
-                  <Link
-                    href={`/books/${item.slug}`}
-                    className="mt-2 flex min-h-12 items-center rounded-full bg-ink px-7 text-base font-bold text-white outline-offset-2 transition hover:bg-neutral-700 active:scale-95 focus-visible:outline-2 focus-visible:outline-ink"
-                  >
-                    이 책 보기
-                  </Link>
-                )}
-              </div>
-            </div>
+            <Slide item={item} first={i === 0} />
           </div>
         ))}
       </div>
-
-      {total > 1 && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-6">
-          <div className="mx-auto flex max-w-6xl items-center justify-end gap-3 px-5 lg:px-8">
-            <button type="button" onClick={() => go(index - 1)} disabled={index === 0} aria-label="이전 책" className={arrowClass}>
-              <Arrow dir="prev" />
-            </button>
-            <span className="min-w-12 text-center text-sm font-bold tabular-nums text-ink" aria-live="polite">
-              {index + 1} / {total}
-            </span>
-            <button type="button" onClick={() => go(index + 1)} disabled={index === total - 1} aria-label="다음 책" className={arrowClass}>
-              <Arrow dir="next" />
-            </button>
-          </div>
-        </div>
-      )}
+      <div className="mx-auto -mt-4 flex max-w-6xl items-center justify-end gap-3 px-5 pb-8 lg:px-8">
+        <button type="button" onClick={() => go(index - 1)} disabled={index === 0} aria-label="이전 책" className={arrowClass}>
+          <Arrow dir="prev" />
+        </button>
+        <span className="type-label min-w-12 text-center tabular-nums" aria-live="polite">
+          {index + 1} / {total}
+        </span>
+        <button type="button" onClick={() => go(index + 1)} disabled={index === total - 1} aria-label="다음 책" className={arrowClass}>
+          <Arrow dir="next" />
+        </button>
+      </div>
     </section>
   );
 }

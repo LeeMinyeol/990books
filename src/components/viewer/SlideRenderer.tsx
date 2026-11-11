@@ -32,7 +32,7 @@ function ImageSlot({ image, className = "" }: { image: ImageRef; className?: str
         />
       ) : (
         <div className="flex h-full flex-col items-center justify-center gap-1 px-6 text-center">
-          <span className="text-xs font-bold tracking-wider text-accent">
+          <span className="text-xs font-bold tracking-wider text-accent-ink">
             스크린샷 자리 · 16:10
           </span>
           <span className="text-sm text-neutral-500">{image.alt}</span>
@@ -76,7 +76,7 @@ function Stamp() {
   });
   return (
     <div
-      className="animate-stamp pointer-events-none absolute right-4 top-4 flex h-24 w-24 flex-col items-center justify-center rounded-full border-4 border-accent text-accent lg:right-10 lg:top-8 lg:h-28 lg:w-28"
+      className="animate-stamp pointer-events-none absolute right-4 top-4 flex h-24 w-24 flex-col items-center justify-center rounded-full border-4 border-accent text-accent-ink lg:right-10 lg:top-8 lg:h-28 lg:w-28"
       role="img"
       aria-label="완독 스탬프"
     >
@@ -93,7 +93,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
         <Body>
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="flex flex-col gap-4">
-              <span className="text-sm font-bold text-accent">990books · AI</span>
+              <span className="text-sm font-bold text-accent-ink">99BOOKS</span>
               <h1 className="font-title text-[1.9rem] leading-tight text-neutral-950 lg:text-5xl lg:leading-[1.2]">
                 {slide.title}
               </h1>
@@ -102,7 +102,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
                 {slide.chips.map((c) => (
                   <li
                     key={c}
-                    className="rounded-full bg-accent-soft px-3 py-1 text-sm font-bold text-accent"
+                    className="rounded-full bg-accent-soft px-3 py-1 text-sm font-bold text-accent-ink"
                   >
                     {c}
                   </li>
@@ -118,7 +118,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
       return (
         <Body>
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-bold text-accent">준비물 체크</span>
+            <span className="text-sm font-bold text-accent-ink">준비물 체크</span>
             <h2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</h2>
           </div>
           <ul className="flex flex-col gap-3">
@@ -127,7 +127,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
                 key={it.label}
                 className="flex items-center gap-4 rounded-2xl border border-neutral-200 px-4 py-3 lg:px-6 lg:py-4"
               >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-on-accent">
                   <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="m5 12 5 5L20 7" />
                   </svg>
@@ -151,7 +151,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
           <div className={`grid items-center gap-6 ${slide.image ? "lg:grid-cols-2 lg:gap-12" : ""}`}>
             {slide.image && <ImageSlot image={slide.image} className="lg:order-first" />}
             <div className="flex flex-col gap-4">
-              <span className="text-sm font-bold text-accent">STEP {slide.step}</span>
+              <span className="text-sm font-bold text-accent-ink">STEP {slide.step}</span>
               <h2 className="font-title text-3xl leading-tight text-neutral-950 lg:text-4xl">
                 {slide.title}
               </h2>
@@ -168,13 +168,13 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
       return (
         <Body>
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-bold text-accent">요약</span>
+            <span className="text-sm font-bold text-accent-ink">요약</span>
             <h2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</h2>
           </div>
           <ol className="flex flex-col gap-3">
             {slide.points.map((p, i) => (
               <li key={p} className="flex items-center gap-4 rounded-2xl bg-accent-soft px-4 py-3 lg:px-6 lg:py-4">
-                <span className="font-title text-2xl text-accent">{i + 1}</span>
+                <span className="font-title text-2xl text-accent-ink">{i + 1}</span>
                 <span className="text-base font-bold text-neutral-900 lg:text-lg">{p}</span>
               </li>
             ))}
@@ -187,10 +187,10 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
         <>
           <Stamp />
           <Body>
-            <span className="text-sm font-bold text-accent">다음편 예고</span>
+            <span className="text-sm font-bold text-accent-ink">다음편 예고</span>
             <div className="relative flex flex-col gap-4 overflow-hidden rounded-3xl border-2 border-accent p-6 lg:p-10">
               <div className="animate-shine pointer-events-none absolute inset-0" aria-hidden />
-              <div className="flex items-center gap-3 text-accent">
+              <div className="flex items-center gap-3 text-accent-ink">
                 <LockIcon />
                 <span className="text-sm font-bold">잠겨 있어요</span>
               </div>

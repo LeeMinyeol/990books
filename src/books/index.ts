@@ -11,12 +11,23 @@ export function getBook(slug: string): Book | undefined {
 
 function toShelfItem(book: Book): ShelfItem {
   const cover = book.slides.find((s) => s.type === "cover");
+  const checklist = book.slides.find((s) => s.type === "checklist");
+  // "입력값 N" 박스만 센다. "작성 예시" 박스는 복사해 쓰는 것이 아니라서 세지 않는다
+  const inputs = book.slides.filter((s) => s.type === "step" && s.prompt?.label.startsWith("입력값")).length;
   return {
     slug: book.slug,
     title: book.title,
     category: book.category,
     summary: book.summary ?? cover?.subtitle ?? "",
     status: "open",
+    kind: book.kind,
+    topic: book.topic,
+    includes: [
+      `따라 하기 슬라이드 ${book.slides.length}장`,
+      ...(inputs > 0 ? [`복사해 쓰는 입력값 ${inputs}개`] : []),
+      ...(book.files ?? []),
+    ],
+    writtenAt: checklist?.checkedAt,
     accent: book.accent,
     cover: book.cover ?? cover?.preview,
     tools: book.tools,

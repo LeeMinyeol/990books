@@ -34,14 +34,14 @@ export default function PromptBox({
   return (
     <div className="rounded-2xl border-2 border-accent bg-accent-soft p-4 lg:p-5">
       <div className="mb-2 flex items-center justify-between gap-3">
-        <span className="text-sm font-bold text-accent">{label}</span>
+        <span className="text-sm font-bold text-accent-ink">{label}</span>
         <button
           type="button"
           onClick={copy}
           className={`min-h-11 min-w-16 rounded-full px-4 text-sm font-bold transition-colors ${
             copied
               ? "animate-pop bg-neutral-900 text-white"
-              : "bg-accent text-white active:scale-95"
+              : "bg-accent text-on-accent active:scale-95"
           }`}
           aria-live="polite"
         >

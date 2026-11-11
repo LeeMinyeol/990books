@@ -6,22 +6,22 @@ export default function BookCover({
   item,
   sizes,
   priority = false,
+  className = "rounded-2xl",
 }: {
   item: ShelfItem;
   sizes: string;
   priority?: boolean;
+  className?: string;
 }) {
   const src = item.cover?.src;
   return (
     <div
-      className={`relative aspect-[16/10] w-full overflow-hidden rounded-xl border ${
-        item.status === "coming"
-          ? "border-dashed border-neutral-300 bg-neutral-100"
-          : "border-line bg-accent-soft"
+      className={`relative aspect-[16/10] w-full overflow-hidden bg-panel ${className} ${
+        item.status === "coming" ? "border border-dashed border-neutral-300" : ""
       }`}
     >
       {item.status === "coming" ? (
-        <span className="absolute inset-0 flex items-center justify-center font-title text-2xl text-neutral-500">
+        <span className="type-label absolute inset-0 flex items-center justify-center text-sub">
           준비 중
         </span>
       ) : src ? (
@@ -35,7 +35,7 @@ export default function BookCover({
           className="object-cover"
         />
       ) : (
-        <span className="absolute inset-0 flex items-center justify-center px-6 text-center font-title text-xl text-accent">
+        <span className="type-title absolute inset-0 flex items-center justify-center px-6 text-center text-accent-ink">
           {item.title}
         </span>
       )}

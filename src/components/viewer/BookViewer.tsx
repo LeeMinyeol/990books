@@ -49,7 +49,7 @@ export default function BookViewer({ book }: { book: Book }) {
     }
   }
 
-  const style = { "--accent": book.accent } as CSSProperties;
+  const style = { "--accent": book.accent, "--on-accent": book.onAccent ?? "#fff" } as CSSProperties;
 
   return (
     <div style={style} className="flex min-h-dvh flex-col items-center justify-center bg-neutral-100 lg:gap-4 lg:p-6">
@@ -137,7 +137,7 @@ export default function BookViewer({ book }: { book: Book }) {
             <button
               type="button"
               onClick={() => go(current + 1)}
-              className="min-h-11 rounded-full bg-accent px-6 text-sm font-bold text-white transition active:scale-95"
+              className="min-h-11 rounded-full bg-accent px-6 text-sm font-bold text-on-accent transition active:scale-95"
               aria-label="다음 장"
             >
               다음 →

@@ -1,13 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Black_Han_Sans } from "next/font/google";
 import "./globals.css";
-
-// 제목 폰트: Black Han Sans (OFL, 상업 이용 가능)
-const blackhan = Black_Han_Sans({ weight: "400", variable: "--font-blackhan", preload: false, display: "swap" });
 
 export const metadata: Metadata = {
   title: "99BOOKS",
-  description: "990원으로 스킬 하나를 익히는 웹 전자책",
+  description: "따라 하면 결과물 하나가 나오는 웹 전자책",
 };
 
 export const viewport: Viewport = {
@@ -17,11 +13,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ko"
-      className={`${blackhan.variable} h-full antialiased`}
-    >
+    <html lang="ko" className="h-full antialiased">
       <head>
+        {/* 폰트를 바꿀 때는 여기에 새 폰트를 불러오고 globals.css의 폰트 변수 두 개를 바꾼다 */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"

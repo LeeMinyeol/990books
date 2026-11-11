@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Pretendard, 'Malgun Gothic', sans-serif">
-  <rect width="800" height="500" fill="#fff5f7"/>
+  <rect width="800" height="500" fill="#F4F3F1"/>
   <rect x="40" y="30" width="720" height="440" rx="20" fill="#fff" stroke="#e5e5e5"/>
   <path d="M40 50a20 20 0 0 1 20-20h680a20 20 0 0 1 20 20v18H40z" fill="#f4f4f5"/>
   <circle cx="68" cy="49" r="6" fill="#ff5f57"/><circle cx="90" cy="49" r="6" fill="#febc2e"/><circle cx="112" cy="49" r="6" fill="#28c840"/>
   <text x="70" y="104" font-size="20" font-weight="800" fill="#1f1f1f">인스타 30일 계획표</text>
   <!-- header row -->
-  <rect x="70" y="124" width="660" height="40" fill="#E8436E"/>
-  <g font-size="15" font-weight="800" fill="#fff"><text x="90" y="150">날짜</text><text x="190" y="150">주제</text><text x="360" y="150">제목</text><text x="620" y="150">형식</text></g>
+  <rect x="70" y="124" width="660" height="40" fill="#FF6A33"/>
+  <g font-size="15" font-weight="800" fill="#1C1C1C"><text x="90" y="150">날짜</text><text x="190" y="150">주제</text><text x="360" y="150">제목</text><text x="620" y="150">형식</text></g>
   <g stroke="#e4e4e7">
     <path d="M70 204h660M70 244h660M70 284h660M70 324h660M70 364h660M70 404h660"/>
     <path d="M170 124v280M340 124v280M600 124v280"/>

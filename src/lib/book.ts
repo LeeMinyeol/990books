@@ -57,13 +57,23 @@ export type Slide =
   | SummarySlide
   | NextSlide;
 
+/** 상품 종류. 이름과 가격은 src/lib/pricing.ts에서 정한다 */
+export type BookKind = "mini" | "kit" | "deep";
+
 export type Book = {
   slug: string;
+  kind: BookKind;
   /** 책마다 바꿀 수 있는 포인트컬러 */
   accent: string;
+  /** 포인트컬러 바탕 위에 올리는 글자색. 없으면 흰색 */
+  onAccent?: string;
   title: string;
   /** 분야 칩에 쓰는 이름 (예: "AI") */
   category: string;
+  /** 분야 안의 세부 주제 (예: "인스타그램") */
+  topic?: string;
+  /** 슬라이드·입력값 말고 더 들어 있는 파일 (예: "30일 계획표 시트") */
+  files?: string[];
   /** 사이트 카드용: 필요 도구 */
   tools: string;
   /** 사이트 카드용: 추가 비용 (예: "0원") */
@@ -75,7 +85,35 @@ export type Book = {
   cover?: ImageRef;
   /** 완독자 후기 평점. 후기가 3개 이상일 때만 화면에 표시한다 */
   rating?: { average: number; count: number };
+  /** 상세페이지 구성. 만드는 규칙은 .claude/skills/detail-page */
+  detail?: DetailSpec;
   slides: Slide[];
+};
+
+/**
+ * 상세페이지 블록. 책마다 순서와 종류를 다르게 고른다.
+ * toc·preview·facts·refund·reviews는 책 데이터에서 내용을 자동으로 만든다.
+ */
+export type DetailBlock =
+  | { type: "hero"; variant: "split" | "stack" | "band"; lead: string }
+  | { type: "outcome"; title: string; image: ImageRef; caption: string }
+  | { type: "includes"; title: string; items: { name: string; desc: string }[] }
+  | { type: "for-whom"; title: string; items: string[] }
+  | { type: "problem"; title: string; body: string }
+  | { type: "before-after"; title: string; before: string; after: string }
+  | { type: "steps"; title: string; items: { name: string; desc: string }[] }
+  | { type: "toc"; title: string }
+  | { type: "preview"; title: string }
+  | { type: "faq"; title: string; items: { q: string; a: string }[] }
+  | { type: "facts"; title: string }
+  | { type: "refund"; title: string }
+  | { type: "reviews"; title: string }
+  | { type: "next"; title: string };
+
+export type DetailSpec = {
+  /** 블록 순서의 틀. A 결과물 중심, B 문제 해결 중심, C 도구 입문 중심, D 심화 가이드 */
+  recipe: "A" | "B" | "C" | "D";
+  blocks: DetailBlock[];
 };
 
 /** 아직 만들지 않은 책. 홈에 "준비 중"으로만 보인다 */
@@ -93,6 +131,12 @@ export type ShelfItem = {
   category: string;
   summary: string;
   status: "open" | "coming";
+  kind?: BookKind;
+  topic?: string;
+  /** "들어 있는 것" 목록. 슬라이드 수·입력값 수는 데이터에서 센다 */
+  includes?: string[];
+  /** 작성 시점 (YYYY-MM-DD) */
+  writtenAt?: string;
   accent?: string;
   cover?: ImageRef;
   tools?: string;

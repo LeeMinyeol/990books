@@ -1,0 +1,15 @@
+{
+  "note": "책 포인트컬러 목록. 모든 색은 onAccent 글자와 4.5:1 이상, 흰 바탕 위 accent-ink(72% 혼합)와 4.5:1 이상인지 확인했다(2026-11-10). 색을 추가할 때는 같은 기준을 계산해서 넣는다.",
+  "colors": [
+    { "name": "오렌지", "accent": "#FF6A33", "onAccent": "#1C1C1C", "fits": "콘텐츠 제작, SNS, 마케팅" },
+    { "name": "블루", "accent": "#2A64F5", "onAccent": "#FFFFFF", "fits": "업무 자동화, 문서, 생산성" },
+    { "name": "그린", "accent": "#1F9D6B", "onAccent": "#1C1C1C", "fits": "스프레드시트, 가계부, 기록" },
+    { "name": "퍼플", "accent": "#7A4DFF", "onAccent": "#FFFFFF", "fits": "AI 도구 입문, 프롬프트" },
+    { "name": "틸", "accent": "#0E9AA7", "onAccent": "#1C1C1C", "fits": "데이터 분석, SQL" },
+    { "name": "레드", "accent": "#D7373D", "onAccent": "#FFFFFF", "fits": "유튜브, 영상" },
+    { "name": "네이비", "accent": "#233A7A", "onAccent": "#FFFFFF", "fits": "투자 용어·기록, 부동산 용어" },
+    { "name": "브라운", "accent": "#A8663C", "onAccent": "#FFFFFF", "fits": "글쓰기, 노션 정리" },
+    { "name": "스카이", "accent": "#38A8E8", "onAccent": "#1C1C1C", "fits": "웹 개발, 코딩 입문" },
+    { "name": "포레스트", "accent": "#2E6B4F", "onAccent": "#FFFFFF", "fits": "스마트스토어, 판매, 상세페이지" }
+  ]
+}

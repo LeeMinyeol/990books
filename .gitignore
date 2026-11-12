@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 검수용으로 내려받은 출처 본문(저작권이 있어 저장소에 올리지 않는다)
+/.research/

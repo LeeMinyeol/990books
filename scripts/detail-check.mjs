@@ -113,11 +113,16 @@ if (!d) {
   const walk = (v, key) => (typeof v === "string" ? (!["type", "variant", "src"].includes(key) && strings.push(v)) : v && typeof v === "object" ? Object.entries(v).forEach(([k, x]) => walk(x, k)) : null);
   walk(d.blocks);
   const copy = strings.join("\n");
-  const inputs = book.slides.filter((s) => s.type === "step" && s.prompt && /^입력값/.test(s.prompt.label)).length;
+  // 심화 가이드는 챕터 파일 안의 입력값 박스(```입력값 N)도 센다. 화면(src/books/content.ts)과 같은 방식이다
+  const cdir = join("src", "books", slug, "chapters");
+  const chapterFiles = existsSync(cdir) ? readdirSync(cdir).filter((f) => f.endsWith(".md")) : [];
+  const chapterInputs = chapterFiles.reduce((n, f) => n + (readFileSync(join(cdir, f), "utf8").match(/^```입력값/gm) ?? []).length, 0);
+  const inputs = book.slides.filter((s) => s.type === "step" && s.prompt && /^입력값/.test(s.prompt.label)).length + chapterInputs;
   const wrong = [];
+  for (const m of copy.matchAll(/챕터s*(d+)개/g)) if (Number(m[1]) !== chapterFiles.length) wrong.push(`${m[0]} (실제 ${chapterFiles.length}개)`);
   for (const m of copy.matchAll(/슬라이드\s*(\d+)장/g)) if (Number(m[1]) !== book.slides.length) wrong.push(`${m[0]} (실제 ${book.slides.length}장)`);
   for (const m of copy.matchAll(/입력값\s*(\d+)개/g)) if (Number(m[1]) !== inputs) wrong.push(`${m[0]} (실제 ${inputs}개)`);
-  check(wrong.length === 0, "문구 속 장 수·입력값 수", wrong.length ? wrong.join(", ") : "책 데이터와 같음", "book.json 의 실제 값과 같아야 한다");
+  check(wrong.length === 0, "문구 속 장 수·챕터 수·입력값 수", wrong.length ? wrong.join(", ") : "책 데이터와 같음", "book.json 과 chapters 폴더의 실제 값과 같아야 한다");
   const minutes = [...copy.matchAll(/(\d+)분/g)].filter((m) => Number(m[1]) !== book.minutes).map((m) => m[0]);
   if (minutes.length) add("warn", "문구 속 시간", `${[...new Set(minutes)].join(", ")} (책의 걸리는 시간은 ${book.minutes}분)`, "걸리는 시간을 말한 것이면 book.json 의 minutes 와 맞춘다");
 

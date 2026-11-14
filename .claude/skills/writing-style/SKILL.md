@@ -10,7 +10,7 @@ description: 99BOOKS에 올라가는 글(전자책 슬라이드, 심화 가이�
 ## 1. 시작 전에 읽는다
 1. `docs/writing-style.md` 전체
 2. `CLAUDE.md`의 "내용 규칙" 절
-3. 칼럼을 쓸 때는 `docs/samples/column-sample.md` (검사기 합격본)
+3. 칼럼을 쓸 때는 `docs/samples/column-sample.md`, 긴 글형 챕터를 쓸 때는 `docs/samples/deep-chapter-sample.md` (둘 다 검사기 합격본)
 
 ## 2. 종류를 정한다
 | 종류 | 검사기 type | 구조가 적힌 곳 |

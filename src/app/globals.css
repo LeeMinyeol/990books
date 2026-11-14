@@ -95,6 +95,26 @@ body {
   color: #fff;
 }
 
+/* 뷰어 보호(ContentGuard): 글자 선택, 이미지 끌기, 길게 눌러 저장을 막는다 */
+.guard {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+.guard img { -webkit-user-drag: none; }
+.guard ::selection { background: transparent; color: inherit; }
+
+/* 뷰어가 열려 있을 때 인쇄하면 내용 대신 안내 한 줄만 나온다 */
+@media print {
+  html.guarded body > * { display: none !important; }
+  html.guarded body::before {
+    content: "이 책은 화면에서만 볼 수 있어요. 99BOOKS";
+    display: block;
+    padding: 2rem;
+    font-weight: 700;
+  }
+}
+
 /* 홈 캐러셀: 가로 스크롤은 쓰되 스크롤 막대는 숨긴다 */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }

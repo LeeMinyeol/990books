@@ -29,6 +29,7 @@ function ImageSlot({ image, className = "" }: { image: ImageRef; className?: str
           sizes="(min-width: 1024px) 50vw, 100vw"
           unoptimized={image.src.endsWith(".svg")}
           className="object-cover"
+          draggable={false}
         />
       ) : (
         <div className="flex h-full flex-col items-center justify-center gap-1 px-6 text-center">
@@ -86,7 +87,13 @@ function Stamp() {
   );
 }
 
-export default function SlideRenderer({ slide }: { slide: Slide }) {
+/**
+ * 슬라이드형 장 하나를 그린다.
+ * preview는 상세페이지의 "앞 3장" 안에 넣을 때 쓴다(제목 태그를 한 단계 낮추고 완독 스탬프를 빼낸다).
+ */
+export default function SlideRenderer({ slide, preview = false }: { slide: Slide; preview?: boolean }) {
+  const H1 = preview ? "p" : "h1";
+  const H2 = preview ? "h3" : "h2";
   switch (slide.type) {
     case "cover":
       return (
@@ -94,9 +101,9 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="flex flex-col gap-4">
               <span className="text-sm font-bold text-accent-ink">99BOOKS</span>
-              <h1 className="font-title text-[1.9rem] leading-tight text-neutral-950 lg:text-5xl lg:leading-[1.2]">
+              <H1 className="font-title text-[1.9rem] leading-tight text-neutral-950 lg:text-5xl lg:leading-[1.2]">
                 {slide.title}
-              </h1>
+              </H1>
               <p className="text-base text-neutral-600 lg:text-lg">{slide.subtitle}</p>
               <ul className="flex flex-wrap gap-2">
                 {slide.chips.map((c) => (
@@ -119,7 +126,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
         <Body>
           <div className="flex flex-col gap-1">
             <span className="text-sm font-bold text-accent-ink">준비물 체크</span>
-            <h2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</h2>
+            <H2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</H2>
           </div>
           <ul className="flex flex-col gap-3">
             {slide.items.map((it) => (
@@ -152,9 +159,9 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
             {slide.image && <ImageSlot image={slide.image} className="lg:order-first" />}
             <div className="flex flex-col gap-4">
               <span className="text-sm font-bold text-accent-ink">STEP {slide.step}</span>
-              <h2 className="font-title text-3xl leading-tight text-neutral-950 lg:text-4xl">
+              <H2 className="font-title text-3xl leading-tight text-neutral-950 lg:text-4xl">
                 {slide.title}
-              </h2>
+              </H2>
               <p className="text-lg leading-relaxed text-neutral-700 lg:text-xl">
                 <Rich text={slide.text} />
               </p>
@@ -169,7 +176,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
         <Body>
           <div className="flex flex-col gap-1">
             <span className="text-sm font-bold text-accent-ink">요약</span>
-            <h2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</h2>
+            <H2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</H2>
           </div>
           <ol className="flex flex-col gap-3">
             {slide.points.map((p, i) => (
@@ -185,7 +192,7 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
     case "next":
       return (
         <>
-          <Stamp />
+          {!preview && <Stamp />}
           <Body>
             <span className="text-sm font-bold text-accent-ink">다음편 예고</span>
             <div className="relative flex flex-col gap-4 overflow-hidden rounded-3xl border-2 border-accent p-6 lg:p-10">
@@ -194,9 +201,9 @@ export default function SlideRenderer({ slide }: { slide: Slide }) {
                 <LockIcon />
                 <span className="text-sm font-bold">잠겨 있어요</span>
               </div>
-              <h2 className="font-title text-2xl leading-tight text-neutral-950 lg:text-4xl">
+              <H2 className="font-title text-2xl leading-tight text-neutral-950 lg:text-4xl">
                 {slide.title}
-              </h2>
+              </H2>
               <p className="text-base text-neutral-600 lg:text-lg">{slide.teaser}</p>
               <div className="flex items-center gap-3">
                 <span className="font-title text-2xl text-neutral-950">{slide.price}</span>

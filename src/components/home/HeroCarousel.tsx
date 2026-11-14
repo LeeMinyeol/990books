@@ -42,7 +42,14 @@ function Slide({ item, first }: { item: ShelfItem; first: boolean }) {
       />
       <div>
         <p className="type-label text-sub">{[item.category, item.topic].filter(Boolean).join(", ")}</p>
-        <h2 className="type-display mt-3 text-balance">{item.title}</h2>
+        <h2 className="type-display mt-3 text-balance">
+          <Link
+            href={`/books/${item.slug}`}
+            className="rounded outline-offset-4 hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-ink"
+          >
+            {item.title}
+          </Link>
+        </h2>
         <p className="type-body mt-4 text-sub">{item.summary}</p>
         {item.includes && (
           <ul className="type-body mt-5 flex flex-col gap-2">
@@ -57,7 +64,7 @@ function Slide({ item, first }: { item: ShelfItem; first: boolean }) {
         {meta.length > 0 && <p className="type-small mt-4 text-sub">{meta.join(", ")}</p>}
         <div className="mt-7 flex flex-wrap gap-3">
           <Link
-            href={`/books/${item.slug}`}
+            href={`/books/${item.slug}/read`}
             className="type-label flex min-h-13 items-center rounded-full bg-brand px-7 text-on-brand outline-offset-2 transition hover:brightness-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-ink"
           >
             앞 3장 무료로 보기

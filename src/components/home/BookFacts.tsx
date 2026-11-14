@@ -15,7 +15,7 @@ export default function BookFacts({ item }: { item: ShelfItem }) {
       </dd>
       <dt className="text-sub">소요 시간</dt>
       <dd>
-        {item.minutes}분, 슬라이드 {item.slideCount}장
+        {item.minutes}분, {item.chapterCount ? `챕터 ${item.chapterCount}개` : `슬라이드 ${item.slideCount}장`}
       </dd>
       {rating && (
         <>

@@ -1,6 +1,8 @@
 // 책 한 권의 데이터 구조. 슬라이드 내용은 전부 여기 타입에 맞는 JSON으로 두고,
 // 넘김·전환·진행률 같은 동작은 공통 뷰어가 처리한다.
 
+import type { Block } from "./blocks";
+
 export type ImageRef = {
   /** 비어 있으면 "스크린샷 자리" 플레이스홀더를 보여준다 */
   src?: string;
@@ -57,11 +59,37 @@ export type Slide =
   | SummarySlide
   | NextSlide;
 
+/**
+ * 긴 글형 장(심화 가이드 챕터). book.json에 쓰지 않는다.
+ * 서버가 src/books/<slug>/chapters/NN-이름.md를 읽어 만든다.
+ */
+export type ChapterPage = {
+  type: "chapter";
+  no: number;
+  title: string;
+  blocks: Block[];
+  /** 공백을 뺀 글자 수 */
+  chars: number;
+};
+
+/** 결제 전 뷰어의 마지막 자리. 남은 장의 제목만 보여준다(내용은 보내지 않는다) */
+export type LockedPage = {
+  type: "locked";
+  remaining: number;
+  outline: string[];
+  inputs: number;
+};
+
+/** 뷰어가 한 화면에 그리는 단위 */
+export type ViewerPage = Slide | ChapterPage | LockedPage;
+
 /** 상품 종류. 이름과 가격은 src/lib/pricing.ts에서 정한다 */
 export type BookKind = "mini" | "kit" | "deep";
 
 export type Book = {
   slug: string;
+  /** 공개 전 책. 홈에 나오지 않고 개발 화면에서만 주소로 열린다 */
+  draft?: boolean;
   kind: BookKind;
   /** 책마다 바꿀 수 있는 포인트컬러 */
   accent: string;
@@ -143,5 +171,7 @@ export type ShelfItem = {
   extraCost?: string;
   minutes?: number;
   slideCount?: number;
+  /** 심화 가이드의 챕터 수. 있으면 카드에 슬라이드 수 대신 보여준다 */
+  chapterCount?: number;
   rating?: { average: number; count: number };
 };

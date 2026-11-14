@@ -48,7 +48,7 @@ export default function PromptBox({
           {copied ? "복사됨" : "복사"}
         </button>
       </div>
-      <p className="text-[15px] leading-relaxed text-neutral-800 lg:text-base">
+      <p className="whitespace-pre-line text-[15px] leading-relaxed text-neutral-800 lg:text-base">
         {text}
       </p>
     </div>

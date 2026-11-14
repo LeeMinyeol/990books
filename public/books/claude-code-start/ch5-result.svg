@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>정리가 끝난 연습 폴더와 맨 위에 남은 변경기록.csv</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(147.8 140)">
+<rect x="0" y="0" width="560" height="520" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(36 32) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="88" y="52" font-size="40" fill="#141414" dominant-baseline="central">클로드연습</text>
+<line x1="0" y1="104" x2="560" y2="104" stroke="#E7E5E2" stroke-width="2"/>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(72 144) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="124" y="164" font-size="40" fill="#141414" dominant-baseline="central">문서  8개</text>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(72 224) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="124" y="244" font-size="40" fill="#141414" dominant-baseline="central">표  6개</text>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(72 304) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="124" y="324" font-size="40" fill="#141414" dominant-baseline="central">그림  6개</text>
+
+<text x="72" y="444" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">변경기록.csv</text>
+<rect x="48" y="116" width="464" height="252" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="524" cy="104" r="28" fill="#38A8E8"/><text x="524" y="105" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<rect x="64" y="411.2" width="260.00000000000006" height="65.6" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="336.00000000000006" cy="399.2" r="28" fill="#38A8E8"/><text x="336.00000000000006" y="400.2" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+</g>
+<circle cx="799.8" cy="352" r="28" fill="#38A8E8"/><text x="799.8" y="353" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="847.8" y="352" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">종류별 세 폴더</text>
+<circle cx="799.8" cy="448" r="28" fill="#38A8E8"/><text x="799.8" y="449" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="847.8" y="448" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">맨 위에 남은 기록</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

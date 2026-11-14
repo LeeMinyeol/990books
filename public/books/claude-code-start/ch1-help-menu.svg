@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>왼쪽 위 ≡ 메뉴의 도움말 안에 있는 업데이트 확인과 Claude 정보</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(85.24000000000001 98)">
+<rect x="0" y="0" width="260" height="412" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<rect x="8" y="324" width="244" height="68" rx="12" fill="#EDEBE8"/>
+<rect x="32" y="43" width="90" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="32" y="119" width="90" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="32" y="195" width="90" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="32" y="271" width="90" height="22" rx="11" fill="#E7E5E2"/>
+<text x="32" y="358" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">도움말</text>
+<path d="M9 6l6 6-6 6" transform="translate(196 342) scale(1.3333333333333333)" fill="none" stroke="#5E5B57" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="276" y="320" width="360" height="284" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<rect x="308" y="363" width="220" height="22" rx="11" fill="#E7E5E2"/>
+<line x1="276" y1="424" x2="636" y2="424" stroke="#E7E5E2" stroke-width="2"/>
+<text x="308" y="474" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">업데이트 확인…</text>
+<text x="308" y="550" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">Claude 정보</text>
+<rect x="8" y="324" width="244" height="68" rx="12" fill="#38A8E8" fill-opacity="0.16" stroke="#38A8E8" stroke-width="3"/>
+<circle cx="272" cy="304" r="28" fill="#38A8E8"/><text x="272" y="305" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<rect x="284" y="440" width="344" height="68" rx="12" fill="#38A8E8" fill-opacity="0.16" stroke="#38A8E8" stroke-width="3"/>
+<circle cx="676" cy="474" r="28" fill="#38A8E8"/><text x="676" y="475" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<rect x="284" y="516" width="344" height="68" rx="12" fill="#38A8E8" fill-opacity="0.16" stroke="#38A8E8" stroke-width="3"/>
+<circle cx="676" cy="550" r="28" fill="#38A8E8"/><text x="676" y="551" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+</g>
+<circle cx="883.24" cy="304" r="28" fill="#38A8E8"/><text x="883.24" y="305" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="931.24" y="304" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">≡ 메뉴 → 도움말</text>
+<circle cx="883.24" cy="400" r="28" fill="#38A8E8"/><text x="883.24" y="401" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="931.24" y="400" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">새 버전 받기</text>
+<circle cx="883.24" cy="496" r="28" fill="#38A8E8"/><text x="883.24" y="497" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="931.24" y="496" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">버전 번호 보기</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

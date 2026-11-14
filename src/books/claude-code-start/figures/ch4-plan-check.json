@@ -1,0 +1,18 @@
+{
+  "alt": "계획표에서 새 이름이 같은 두 줄을 찾는 모습",
+  "layout": "below",
+  "items": [
+    { "type": "card", "x": 0, "y": 0, "w": 760, "h": 470 },
+    { "type": "text", "x": 36, "y": 50, "text": "계획표", "bold": true },
+    { "type": "line", "x": 0, "y": 96, "w": 760 },
+    { "type": "text", "x": 36, "y": 140, "text": "견적 수정본.csv", "size": 36, "tone": "sub" },
+    { "type": "text", "x": 36, "y": 192, "text": "→ 표 / 날짜없음_견적_01.csv", "size": 36 },
+    { "type": "line", "x": 24, "y": 232, "w": 712 },
+    { "type": "text", "x": 36, "y": 272, "text": "회의메모 최종.txt", "size": 36, "tone": "sub" },
+    { "type": "text", "x": 36, "y": 322, "text": "→ 문서 / 2026-11-03_회의메모_01.txt", "size": 36 },
+    { "type": "text", "x": 36, "y": 384, "text": "회의메모 최종(2).txt", "size": 36, "tone": "sub" },
+    { "type": "text", "x": 36, "y": 434, "text": "→ 문서 / 2026-11-03_회의메모_01.txt", "size": 36 },
+    { "type": "box", "x": 20, "y": 246, "w": 720, "h": 214, "mark": 1 }
+  ],
+  "notes": [{ "n": 1, "text": "새 이름이 같은 두 줄" }]
+}

@@ -1,0 +1,22 @@
+{
+  "alt": "파일이 뒤섞인 폴더가 종류별 폴더로 나뉘고, 정리 규칙 문서와 변경 기록이 남은 모습",
+  "items": [
+    { "type": "card", "x": 0, "y": 0, "w": 480, "h": 520 },
+    { "type": "text", "x": 40, "y": 56, "text": "정리 전", "bold": true },
+    { "type": "line", "x": 0, "y": 104, "w": 480 },
+    { "type": "text", "x": 40, "y": 160, "text": "IMG_0412.svg", "tone": "sub" },
+    { "type": "text", "x": 40, "y": 230, "text": "메모 최종(2).txt", "tone": "sub" },
+    { "type": "text", "x": 40, "y": 300, "text": "견적서 수정.csv", "tone": "sub" },
+    { "type": "text", "x": 40, "y": 370, "text": "새 문서 3.txt", "tone": "sub" },
+    { "type": "text", "x": 40, "y": 440, "text": "… 20개", "tone": "sub" },
+    { "type": "text", "x": 520, "y": 260, "text": "→", "bold": true },
+    { "type": "card", "x": 600, "y": 0, "w": 480, "h": 520 },
+    { "type": "text", "x": 640, "y": 56, "text": "정리 후", "bold": true },
+    { "type": "line", "x": 600, "y": 104, "w": 480 },
+    { "type": "chip", "x": 640, "y": 160, "icon": "folder", "text": "문서" },
+    { "type": "chip", "x": 640, "y": 230, "icon": "folder", "text": "그림" },
+    { "type": "chip", "x": 640, "y": 300, "icon": "folder", "text": "표" },
+    { "type": "text", "x": 640, "y": 370, "text": "CLAUDE.md", "bold": true },
+    { "type": "text", "x": 640, "y": 440, "text": "변경기록.csv", "bold": true }
+  ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>Code 탭 아래쪽의 입력 상자와 그 아래 줄의 칸들</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(115 150)">
+<rect x="0" y="0" width="1000" height="112" rx="20" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<path d="M12 5v14M5 12h14" transform="translate(28 36) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="92" y="56" font-size="40" fill="#9A968F" dominant-baseline="central">작업을 설명하거나 질문하세요</text>
+<path d="M9 5a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0zM6 11a6 6 0 0 0 12 0M12 17v3" transform="translate(932 36) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5 6h14v9H5zM3 18h18" transform="translate(24 184) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="76" y="204" font-size="40" fill="#141414" dominant-baseline="central">이 컴퓨터</text>
+<path d="M6 9l6 6 6-6" transform="translate(251.6 190) scale(1.1666666666666667)" fill="none" stroke="#5E5B57" stroke-width="2.57" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(380 184) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="432" y="204" font-size="40" fill="#141414" dominant-baseline="central">폴더</text>
+<path d="M6 9l6 6 6-6" transform="translate(518.8 190) scale(1.1666666666666667)" fill="none" stroke="#5E5B57" stroke-width="2.57" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="860" y="204" font-size="40" fill="#141414" dominant-baseline="central">자동</text>
+<rect x="-8" y="-8" width="1016" height="128" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="1020" cy="-20" r="28" fill="#38A8E8"/><text x="1020" y="-19" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<rect x="6" y="162" width="297.6" height="84" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="315.6" cy="150" r="28" fill="#38A8E8"/><text x="315.6" y="151" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<rect x="842" y="162" width="112.79999999999995" height="84" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="966.8" cy="150" r="28" fill="#38A8E8"/><text x="966.8" y="151" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+</g>
+<circle cx="467.28000000000003" cy="480" r="28" fill="#38A8E8"/><text x="467.28000000000003" y="481" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="515.28" y="480" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">여기에 요청을 써요</text>
+<circle cx="467.28000000000003" cy="576" r="28" fill="#38A8E8"/><text x="467.28000000000003" y="577" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="515.28" y="576" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">어디서 일할지 (2장)</text>
+<circle cx="467.28000000000003" cy="672" r="28" fill="#38A8E8"/><text x="467.28000000000003" y="673" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="515.28" y="672" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">권한 모드 (3장)</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

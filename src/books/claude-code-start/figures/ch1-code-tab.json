@@ -1,0 +1,20 @@
+{
+  "alt": "사이드바 맨 위 오른쪽의 </> 모양 아이콘이 Code 탭이에요",
+  "items": [
+    { "type": "card", "x": 0, "y": 0, "w": 560, "h": 560 },
+    { "type": "icon", "x": 32, "y": 30, "name": "menu" },
+    { "type": "icon", "x": 104, "y": 30, "name": "panel" },
+    { "type": "icon", "x": 336, "y": 30, "name": "chat", "boxed": true },
+    { "type": "icon", "x": 436, "y": 30, "name": "code", "boxed": true, "mark": 1 },
+    { "type": "line", "x": 0, "y": 118, "w": 560 },
+    { "type": "icon", "x": 36, "y": 150, "name": "plus" },
+    { "type": "text", "x": 104, "y": 172, "text": "새로 만들기" },
+    { "type": "icon", "x": 36, "y": 230, "name": "search" },
+    { "type": "text", "x": 104, "y": 252, "text": "검색" },
+    { "type": "bar", "x": 36, "y": 336, "w": 300 },
+    { "type": "bar", "x": 36, "y": 396, "w": 380 },
+    { "type": "bar", "x": 36, "y": 456, "w": 260 },
+    { "type": "bar", "x": 36, "y": 516, "w": 340 }
+  ],
+  "notes": [{ "n": 1, "text": "</> 아이콘: Code 탭" }]
+}

@@ -1,0 +1,53 @@
+{
+  "alt": "Code 탭 아래쪽의 입력 상자와 그 아래 줄의 칸들",
+  "layout": "below",
+  "items": [
+    {
+      "type": "input",
+      "x": 0,
+      "y": 0,
+      "w": 1000,
+      "h": 112,
+      "text": "작업을 설명하거나 질문하세요",
+      "mark": 1
+    },
+    {
+      "type": "chip",
+      "x": 24,
+      "y": 204,
+      "icon": "computer",
+      "text": "이 컴퓨터",
+      "chevron": true,
+      "mark": 2
+    },
+    {
+      "type": "chip",
+      "x": 380,
+      "y": 204,
+      "icon": "folder",
+      "text": "폴더",
+      "chevron": true
+    },
+    {
+      "type": "chip",
+      "x": 860,
+      "y": 204,
+      "text": "자동",
+      "mark": 3
+    }
+  ],
+  "notes": [
+    {
+      "n": 1,
+      "text": "여기에 요청을 써요"
+    },
+    {
+      "n": 2,
+      "text": "어디서 일할지 (2장)"
+    },
+    {
+      "n": 3,
+      "text": "권한 모드 (3장)"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>CLAUDE.md의 세 구역: 정리 규칙, 옮기지 말 파일, 정리해줘라고 하면</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(91.79999999999995 100)">
+<rect x="0" y="0" width="600" height="600" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<text x="36" y="50" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">CLAUDE.md</text>
+<line x1="0" y1="98" x2="600" y2="98" stroke="#E7E5E2" stroke-width="2"/>
+<text x="36" y="148" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">## 정리 규칙</text>
+<rect x="36" y="193" width="420" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="36" y="237" width="360" height="22" rx="11" fill="#E7E5E2"/>
+<text x="36" y="314" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">## 옮기지 말 파일</text>
+<rect x="36" y="359" width="300" height="22" rx="11" fill="#E7E5E2"/>
+<text x="36" y="436" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">## "정리해줘"라고 하면</text>
+<rect x="36" y="481" width="440" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="36" y="525" width="380" height="22" rx="11" fill="#E7E5E2"/>
+<rect x="28" y="115.2" width="227.2" height="65.6" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="267.2" cy="103.2" r="28" fill="#38A8E8"/><text x="267.2" y="104.2" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<rect x="28" y="281.2" width="315.99999999999994" height="65.6" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="355.99999999999994" cy="269.2" r="28" fill="#38A8E8"/><text x="355.99999999999994" y="270.2" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<rect x="28" y="403.2" width="414.40000000000003" height="65.6" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="454.40000000000003" cy="391.2" r="28" fill="#38A8E8"/><text x="454.40000000000003" y="392.2" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+</g>
+<circle cx="783.8" cy="304" r="28" fill="#38A8E8"/><text x="783.8" y="305" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="831.8" y="304" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">4장의 규칙</text>
+<circle cx="783.8" cy="400" r="28" fill="#38A8E8"/><text x="783.8" y="401" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="831.8" y="400" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">휩쓸리면 안 되는 파일</text>
+<circle cx="783.8" cy="496" r="28" fill="#38A8E8"/><text x="783.8" y="497" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="831.8" y="496" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">4·5장의 순서</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

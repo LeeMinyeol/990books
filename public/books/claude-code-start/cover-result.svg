@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>파일이 뒤섞인 폴더가 종류별 폴더로 나뉘고, 정리 규칙 문서와 변경 기록이 남은 모습</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(100 140)">
+<rect x="0" y="0" width="480" height="520" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<text x="40" y="56" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">정리 전</text>
+<line x1="0" y1="104" x2="480" y2="104" stroke="#E7E5E2" stroke-width="2"/>
+<text x="40" y="160" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">IMG_0412.svg</text>
+<text x="40" y="230" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">메모 최종(2).txt</text>
+<text x="40" y="300" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">견적서 수정.csv</text>
+<text x="40" y="370" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">새 문서 3.txt</text>
+<text x="40" y="440" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">… 20개</text>
+<text x="520" y="260" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">→</text>
+<rect x="600" y="0" width="480" height="520" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<text x="640" y="56" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">정리 후</text>
+<line x1="600" y1="104" x2="1080" y2="104" stroke="#E7E5E2" stroke-width="2"/>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(640 140) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="692" y="160" font-size="40" fill="#141414" dominant-baseline="central">문서</text>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(640 210) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="692" y="230" font-size="40" fill="#141414" dominant-baseline="central">그림</text>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(640 280) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="692" y="300" font-size="40" fill="#141414" dominant-baseline="central">표</text>
+<text x="640" y="370" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">CLAUDE.md</text>
+<text x="640" y="440" font-size="40" font-weight="700" fill="#141414" dominant-baseline="central">변경기록.csv</text>
+</g>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

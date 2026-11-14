@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>권한 모드 목록에서 편집 자동 수락을 고르는 모습</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(146.8 89)">
+<rect x="0" y="0" width="420" height="488" rx="16" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<text x="32" y="54" font-size="40" font-weight="400" fill="#5E5B57" dominant-baseline="central">권한 · 이 세션</text>
+<text x="32" y="130" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">자동</text>
+<text x="32" y="206" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">수동</text>
+<text x="32" y="282" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">편집 자동 수락</text>
+<text x="32" y="358" font-size="40" font-weight="400" fill="#141414" dominant-baseline="central">계획</text>
+<text x="32" y="434" font-size="40" font-weight="400" fill="#9A968F" dominant-baseline="central">권한 무시</text>
+<text x="300" y="588" font-size="40" fill="#141414" dominant-baseline="central">자동</text>
+<rect x="8" y="248" width="404" height="68" rx="12" fill="#38A8E8" fill-opacity="0.16" stroke="#38A8E8" stroke-width="3"/>
+<circle cx="460" cy="282" r="28" fill="#38A8E8"/><text x="460" y="283" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<rect x="282" y="546" width="112.80000000000001" height="84" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="406.8" cy="534" r="28" fill="#38A8E8"/><text x="406.8" y="535" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+</g>
+<circle cx="728.8" cy="352" r="28" fill="#38A8E8"/><text x="728.8" y="353" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="776.8" y="352" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">아래 줄 오른쪽 끝 칸</text>
+<circle cx="728.8" cy="448" r="28" fill="#38A8E8"/><text x="728.8" y="449" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="776.8" y="448" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">편집 자동 수락 고르기</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

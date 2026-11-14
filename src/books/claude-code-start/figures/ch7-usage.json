@@ -1,0 +1,14 @@
+{
+  "alt": "입력 상자 아래 줄 오른쪽 끝의 사용량 링",
+  "layout": "below",
+  "items": [
+    { "type": "input", "x": 0, "y": 0, "w": 1000, "h": 112, "text": "작업을 설명하거나 질문하세요" },
+    { "type": "chip", "x": 24, "y": 204, "icon": "computer", "text": "이 컴퓨터", "chevron": true },
+    { "type": "chip", "x": 380, "y": 204, "icon": "folder", "text": "폴더", "chevron": true },
+    { "type": "chip", "x": 760, "y": 204, "text": "자동" },
+    { "type": "icon", "x": 932, "y": 182, "name": "ring", "mark": 1 }
+  ],
+  "notes": [
+    { "n": 1, "text": "사용량 링: 누르면 요금제 사용량이 보여요" }
+  ]
+}

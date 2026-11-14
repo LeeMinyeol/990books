@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+<title>입력 상자 아래 줄 오른쪽 끝의 사용량 링</title>
+<rect width="1280" height="800" fill="#F4F3F1"/>
+<g transform="translate(127 221)">
+<rect x="0" y="0" width="1000" height="112" rx="20" fill="#FFFFFF" stroke="#E7E5E2" stroke-width="2"/>
+<path d="M12 5v14M5 12h14" transform="translate(28 36) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="92" y="56" font-size="40" fill="#9A968F" dominant-baseline="central">작업을 설명하거나 질문하세요</text>
+<path d="M9 5a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0zM6 11a6 6 0 0 0 12 0M12 17v3" transform="translate(932 36) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5 6h14v9H5zM3 18h18" transform="translate(24 184) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="76" y="204" font-size="40" fill="#141414" dominant-baseline="central">이 컴퓨터</text>
+<path d="M6 9l6 6 6-6" transform="translate(251.6 190) scale(1.1666666666666667)" fill="none" stroke="#5E5B57" stroke-width="2.57" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 7h7l2 2h9v10H3z" transform="translate(380 184) scale(1.6666666666666667)" fill="none" stroke="#5E5B57" stroke-width="1.80" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="432" y="204" font-size="40" fill="#141414" dominant-baseline="central">폴더</text>
+<path d="M6 9l6 6 6-6" transform="translate(518.8 190) scale(1.1666666666666667)" fill="none" stroke="#5E5B57" stroke-width="2.57" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="760" y="204" font-size="40" fill="#141414" dominant-baseline="central">자동</text>
+<path d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zM12 7a5 5 0 0 1 5 5" transform="translate(932 182) scale(1.8333333333333333)" fill="none" stroke="#5E5B57" stroke-width="1.64" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="924" y="174" width="60" height="60" rx="14" fill="none" stroke="#38A8E8" stroke-width="4"/>
+<circle cx="996" cy="162" r="28" fill="#38A8E8"/><text x="996" y="163" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+</g>
+<circle cx="289.43999999999994" cy="551" r="28" fill="#38A8E8"/><text x="289.43999999999994" y="552" font-size="30" font-weight="800" fill="#1C1C1C" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="337.43999999999994" y="551" font-size="36" font-weight="700" fill="#141414" dominant-baseline="central">사용량 링: 누르면 요금제 사용량이 보여요</text>
+<text x="1252" y="772" font-size="22" fill="#9A968F" text-anchor="end">설명용 목업</text>
+</svg>

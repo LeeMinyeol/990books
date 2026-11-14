@@ -1,0 +1,17 @@
+{
+  "alt": "정리가 끝난 연습 폴더와 맨 위에 남은 변경기록.csv",
+  "items": [
+    { "type": "card", "x": 0, "y": 0, "w": 560, "h": 520 },
+    { "type": "chip", "x": 36, "y": 52, "icon": "folder", "text": "클로드연습" },
+    { "type": "line", "x": 0, "y": 104, "w": 560 },
+    { "type": "chip", "x": 72, "y": 164, "icon": "folder", "text": "문서  8개" },
+    { "type": "chip", "x": 72, "y": 244, "icon": "folder", "text": "표  6개" },
+    { "type": "chip", "x": 72, "y": 324, "icon": "folder", "text": "그림  6개" },
+    { "type": "box", "x": 56, "y": 124, "w": 448, "h": 236, "mark": 1 },
+    { "type": "text", "x": 72, "y": 444, "text": "변경기록.csv", "bold": true, "mark": 2 }
+  ],
+  "notes": [
+    { "n": 1, "text": "종류별 세 폴더" },
+    { "n": 2, "text": "맨 위에 남은 기록" }
+  ]
+}

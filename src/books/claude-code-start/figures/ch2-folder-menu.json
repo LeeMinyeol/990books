@@ -1,0 +1,19 @@
+{
+  "alt": "입력 상자 아래 폴더 칸을 누르면 열리는 목록과 맨 아래의 폴더 열기",
+  "items": [
+    { "type": "menu", "x": 0, "y": 0, "w": 400, "rows": [
+      { "text": "폴더 없음" },
+      { "sep": true },
+      { "text": "최근", "tone": "sub" },
+      { "bar": 200 },
+      { "bar": 160 },
+      { "sep": true },
+      { "text": "폴더 열기…", "mark": 2 }
+    ] },
+    { "type": "chip", "x": 24, "y": 600, "icon": "folder", "text": "폴더", "chevron": true, "mark": 1 }
+  ],
+  "notes": [
+    { "n": 1, "text": "입력 상자 아래 폴더 칸" },
+    { "n": 2, "text": "폴더 열기… 로 고르기" }
+  ]
+}

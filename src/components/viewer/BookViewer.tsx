@@ -8,7 +8,8 @@ import ChapterView from "./ChapterView";
 import ContentGuard from "./ContentGuard";
 import LockedView from "./LockedView";
 import SlideRenderer from "./SlideRenderer";
-import Watermark from "./Watermark";
+import Watermark, { ReaderLine } from "./Watermark";
+import { FREE_PAGES } from "@/lib/access";
 
 type Props = {
   book: { slug: string; title: string; accent: string; onAccent?: string };
@@ -37,6 +38,8 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
   const longForm = page.type === "chapter";
   const seen = page.type === "locked" ? current : current + 1;
   const percent = Math.round((seen / totalPages) * 100);
+  // 워터마크는 결제한 구간에만 넣는다(무료 3장과 잠금 안내에는 넣지 않는다)
+  const marked = watermark !== null && current >= FREE_PAGES && page.type !== "locked";
   const detailHref = `/books/${book.slug}`;
 
   const go = useCallback(
@@ -89,7 +92,7 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
           }`}
         >
           {/* 진행률 */}
-          <header className="shrink-0 px-5 pt-3 lg:px-8 lg:pt-4">
+          <header className="relative z-[1] shrink-0 px-5 pt-3 lg:px-8 lg:pt-4">
             <div className="mb-2 flex items-center justify-between text-xs font-bold text-neutral-600">
               <Link
                 href={detailHref}
@@ -123,7 +126,7 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
           {/* 장 */}
           <main
             ref={scroller}
-            className="relative min-h-0 flex-1 overflow-y-auto overflow-x-hidden"
+            className="relative z-[1] min-h-0 flex-1 overflow-y-auto overflow-x-hidden"
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
           >
@@ -139,6 +142,7 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
                 ) : (
                   <SlideRenderer slide={page} />
                 )}
+                {marked && page.type === "chapter" && <ReaderLine text={watermark} />}
               </div>
             )}
 
@@ -162,7 +166,7 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
           </main>
 
           {/* 넘기기 */}
-          <footer className="flex shrink-0 items-center justify-between gap-3 px-5 pb-4 pt-2 lg:px-8 lg:pb-5">
+          <footer className="relative z-[1] flex shrink-0 items-center justify-between gap-3 px-5 pb-4 pt-2 lg:px-8 lg:pb-5">
             <button
               type="button"
               onClick={() => go(current - 1)}
@@ -195,7 +199,7 @@ export default function BookViewer({ book, pages, totalPages, price, watermark }
             )}
           </footer>
 
-          {watermark && <Watermark text={watermark} />}
+          {marked && <Watermark text={watermark} />}
         </div>
       </div>
     </ContentGuard>

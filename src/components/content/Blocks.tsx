@@ -1,8 +1,9 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import type { Block } from "@/lib/blocks";
+import type { Block, StepBlock } from "@/lib/blocks";
 import PromptBox from "@/components/viewer/PromptBox";
 import MotionFigure from "./MotionFigure";
+import StepList, { Fold, type StepCardData } from "./StepList";
 
 /** **굵게**와 `글자 그대로`만 지원하는 가벼운 렌더러 */
 export function Rich({ text }: { text: string }): ReactNode {
@@ -83,6 +84,54 @@ function BlockView({ block }: { block: Block }) {
         </ul>
       );
     case "table":
+      // 증상·원인·해결 표는 증상별 접는 칸으로 그린다(모바일에서 옆으로 밀지 않게)
+      if (block.head.join("|") === "증상|원인|해결") {
+        return (
+          <div className="flex flex-col gap-2">
+            {block.rows.map((row, r) => (
+              <Fold key={r} label={row[0]}>
+                <p className="type-body text-ink">
+                  <span className="type-label mr-2 text-sub">원인</span>
+                  <Rich text={row[1] ?? ""} />
+                </p>
+                <p className="type-body text-ink">
+                  <span className="type-label mr-2 text-accent-ink">해결</span>
+                  <Rich text={row[2] ?? ""} />
+                </p>
+              </Fold>
+            ))}
+          </div>
+        );
+      }
+      // 나쁜 예·좋은 예 표는 비교 카드로 그린다(모바일에서 옆으로 밀지 않게)
+      if (block.head[0] === "구분" && block.rows.every((r) => r[0] === "나쁜 예" || r[0] === "좋은 예")) {
+        return (
+          <div className="flex flex-col gap-3">
+            {block.rows.map((row, r) => {
+              const good = row[0] === "좋은 예";
+              return (
+                <div
+                  key={r}
+                  className={`rounded-2xl px-4 py-3 ${good ? "border-l-4 border-accent bg-accent-soft" : "border border-line bg-panel"} ${
+                    good && r > 0 ? "-mt-1" : ""
+                  } ${!good && r > 0 ? "mt-3" : ""}`}
+                >
+                  <p className={`type-label ${good ? "text-accent-ink" : "text-sub"}`}>{row[0]}</p>
+                  <p className="type-body mt-1 text-ink">
+                    <Rich text={row[1] ?? ""} />
+                  </p>
+                  {row[2] && (
+                    <p className="type-small mt-1 text-sub">
+                      <span aria-hidden>→ </span>
+                      <Rich text={row[2]} />
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        );
+      }
       return (
         // 표를 옆으로 미는 동작이 장 넘김으로 읽히지 않게 표시해 둔다
         <div data-noswipe className="overflow-x-auto rounded-2xl border border-line">
@@ -142,13 +191,30 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-/** 긴 글 본문. 긴 글형 책 챕터와 오늘의 칼럼이 같이 쓴다 */
+function toCard(step: StepBlock): StepCardData {
+  const list = (items: Block[]) => (items.length ? items.map((b, i) => <BlockView key={i} block={b} />) : null);
+  return {
+    no: step.no,
+    title: step.title,
+    action: <Rich text={step.action} />,
+    visible: list(step.visible),
+    success: step.success.map((t, i) => <Rich key={i} text={t} />),
+    trouble: step.trouble.map((t, i) => <Rich key={i} text={t} />),
+    more: list(step.more),
+  };
+}
+
+/** 긴 글 본문. 긴 글형 책 챕터와 오늘의 칼럼이 같이 쓴다. 이어지는 단계 카드는 한 묶음으로 그린다 */
 export default function Blocks({ blocks }: { blocks: Block[] }) {
-  return (
-    <div className="flex flex-col gap-5">
-      {blocks.map((block, i) => (
-        <BlockView key={i} block={block} />
-      ))}
-    </div>
-  );
+  const out: ReactNode[] = [];
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
+    if (block.type === "step") {
+      const group: StepBlock[] = [];
+      while (i < blocks.length && blocks[i].type === "step") group.push(blocks[i++] as StepBlock);
+      i--;
+      out.push(<StepList key={`steps-${i}`} steps={group.map(toCard)} />);
+    } else out.push(<BlockView key={i} block={block} />);
+  }
+  return <div className="flex flex-col gap-5">{out}</div>;
 }

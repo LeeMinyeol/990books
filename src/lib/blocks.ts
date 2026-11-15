@@ -2,6 +2,7 @@
 // 글은 마크다운 파일로 쓰고, 서버가 이 변환을 거쳐 블록만 보낸다.
 // 지원하는 것: # 제목, ## 소제목, ### 단계 제목, 문단, **굵게**, 목록, 번호 목록,
 // 점검표(- [ ]), 표, 이미지, 인용, 입력값 박스(```입력값 1).
+// 맨 위에 "layout: cards"를 적은 챕터는 "### 1. 동작" 단계를 카드(step)로 묶는다(docs/wireframe.md 3-9).
 
 import type { ImageRef } from "./book";
 
@@ -15,7 +16,50 @@ export type Block =
   | { type: "table"; head: string[]; rows: string[][] }
   | { type: "prompt"; label: string; text: string }
   | { type: "image"; image: ImageRef }
-  | { type: "quote"; text: string };
+  | { type: "quote"; text: string }
+  | StepBlock;
+
+/**
+ * 단계 카드. 첫 문단이 할 일이고, 입력값·그림·번호 목록·점검표는 카드에 그대로 보인다.
+ * "성공:"으로 시작하는 문단은 성공 확인, "안 되면:"은 접힌 칸, 나머지 설명은 "더 알아보기" 접힌 칸으로 간다.
+ */
+export type StepBlock = {
+  type: "step";
+  no: number;
+  title: string;
+  action: string;
+  visible: Block[];
+  success: string[];
+  trouble: string[];
+  more: Block[];
+};
+
+/** "### 1. 동작" 제목과 그 아래 블록을 카드로 묶는다 */
+function groupSteps(blocks: Block[]): Block[] {
+  const out: Block[] = [];
+  let card: StepBlock | null = null;
+  for (const b of blocks) {
+    const m = b.type === "h3" ? b.text.match(/^(\d+)\.\s*(.+)$/) : null;
+    if (m) {
+      card = { type: "step", no: Number(m[1]), title: m[2], action: "", visible: [], success: [], trouble: [], more: [] };
+      out.push(card);
+      continue;
+    }
+    if (b.type === "h2" || b.type === "h3") card = null;
+    if (!card) {
+      out.push(b);
+      continue;
+    }
+    if (b.type === "p") {
+      if (/^성공:\s*/.test(b.text)) card.success.push(b.text.replace(/^성공:\s*/, ""));
+      else if (/^안 되면:\s*/.test(b.text)) card.trouble.push(b.text.replace(/^안 되면:\s*/, ""));
+      else if (!card.action) card.action = b.text;
+      else card.more.push(b);
+    } else if (b.type === "prompt" || b.type === "image" || b.type === "ol" || b.type === "check") card.visible.push(b);
+    else card.more.push(b);
+  }
+  return out;
+}
 
 export type ParsedDoc = {
   /** 맨 위 "# 제목" 줄. 없으면 빈 문자열 */
@@ -154,5 +198,5 @@ export function parseDoc(raw: string): ParsedDoc {
     count(para.join(""));
   }
 
-  return { title, meta, blocks, chars };
+  return { title, meta, blocks: meta.layout === "cards" ? groupSteps(blocks) : blocks, chars };
 }

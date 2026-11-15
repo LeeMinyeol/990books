@@ -72,7 +72,11 @@ export function countInputs(pages: ViewerPage[]): number {
   let n = 0;
   for (const p of pages) {
     if (p.type === "step" && p.prompt?.label.startsWith("입력값")) n++;
-    if (p.type === "chapter") n += p.blocks.filter((b) => b.type === "prompt" && b.label.startsWith("입력값")).length;
+    if (p.type === "chapter") {
+      // 단계 카드 안의 입력값 박스도 센다
+      const flat = p.blocks.flatMap((b) => (b.type === "step" ? b.visible : [b]));
+      n += flat.filter((b) => b.type === "prompt" && b.label.startsWith("입력값")).length;
+    }
   }
   return n;
 }

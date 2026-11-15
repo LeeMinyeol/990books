@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteFooter from "@/components/home/SiteFooter";
 import SiteHeader from "@/components/home/SiteHeader";
+
+export const metadata: Metadata = {
+  title: "찾는 페이지가 없어요 | 99BOOKS",
+  robots: { index: false },
+};
 
 /** 없는 주소. 이유를 짐작할 수 있게 쓰고, 갈 곳 두 군데를 준다 */
 export default function NotFound() {

@@ -6,6 +6,7 @@ import { books } from "@/books";
 import Blocks from "@/components/content/Blocks";
 import SiteFooter from "@/components/home/SiteFooter";
 import SiteHeader from "@/components/home/SiteHeader";
+import MobileBuyBar from "./MobileBuyBar";
 import SoonButton from "@/components/home/SoonButton";
 import SlideRenderer from "@/components/viewer/SlideRenderer";
 import { FREE_PAGES } from "@/lib/access";
@@ -107,7 +108,7 @@ function Hero({ ctx, block }: { ctx: Ctx; block: Extract<DetailBlock, { type: "h
       <h1 className="type-display text-balance">{book.title}</h1>
       {lead && <p className={`type-body mt-4 max-w-2xl ${band ? "" : "text-sub"}`}>{lead}</p>}
       <p className={`type-small mt-4 ${band ? "" : "text-sub"}`}>{ctx.meta.join(" · ")}</p>
-      <div className="mt-7">
+      <div id="hero-cta" className="mt-7">
         <Cta ctx={ctx} onAccent={band} />
       </div>
       <p className={`type-small mt-3 ${band ? "" : "text-sub"}`}>{REFUND_SHORT}</p>
@@ -464,11 +465,11 @@ export default function DetailPage({ book }: { book: Book }) {
         </section>
       </main>
       <SiteFooter />
-      {/* 모바일: 아래 고정 버튼 바. 본문이 가려지지 않게 같은 높이의 빈칸을 둔다 */}
+      {/* 모바일: 아래 고정 버튼 바(첫 화면 버튼이 안 보일 때만 나온다). 본문이 가려지지 않게 같은 높이의 빈칸을 둔다 */}
       <div className="h-20 lg:hidden" aria-hidden />
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-white px-4 py-3 lg:hidden">
+      <MobileBuyBar>
         <Cta ctx={ctx} compact up />
-      </div>
+      </MobileBuyBar>
     </div>
   );
 }

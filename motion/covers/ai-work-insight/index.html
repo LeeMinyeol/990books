@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=900, height=1200" />
+    <style>
+      @font-face { font-family: "Pretendard"; font-weight: 400; src: url("assets/fonts/Pretendard-Regular.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 700; src: url("assets/fonts/Pretendard-Bold.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 800; src: url("assets/fonts/Pretendard-ExtraBold.woff2") format("woff2"); }
+      /* 책 색: 퍼플(accent) + 먹색 + 종이색 */
+      :root { --violet: #7a4dff; --ink: #1c1c1c; --paper: #f3efe6; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 900px; height: 1200px; overflow: hidden; background: var(--paper); }
+      body { font-family: "Pretendard", sans-serif; color: var(--ink); }
+      #root { position: relative; width: 900px; height: 1200px; overflow: hidden; background: var(--paper); }
+
+      /* 위: AI에게 맡길 일(보라 하늘), 아래: 내가 판단할 일(종이). 그 사이를 울퉁불퉁한 성벽이 가른다 */
+      .sky { position: absolute; inset: 0 0 auto 0; height: 1200px; }
+      .top { position: absolute; left: 80px; top: 120px; color: #fff; }
+      .top .kicker { font-size: 34px; font-weight: 700; opacity: 0.92; letter-spacing: -0.01em; }
+      .top .t1 { margin-top: 18px; font-size: 118px; font-weight: 800; line-height: 1.05; letter-spacing: -0.05em; }
+      .bottom { position: absolute; left: 80px; top: 820px; }
+      .bottom .t2 { font-size: 118px; font-weight: 800; line-height: 1.05; letter-spacing: -0.05em; }
+      .bottom .sub { margin-top: 26px; font-size: 32px; font-weight: 700; letter-spacing: -0.01em; }
+      .eng { position: absolute; left: 80px; top: 462px; font-size: 22px; font-weight: 800; letter-spacing: 0.42em; color: #fff; opacity: 0.85; }
+      .foot { position: absolute; left: 80px; right: 80px; bottom: 54px; display: flex; justify-content: space-between; align-items: baseline;
+              border-top: 3px solid var(--ink); padding-top: 18px; font-size: 26px; }
+      .foot .kind { font-weight: 700; }
+      .foot .mark { font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1" data-width="900" data-height="1200">
+      <svg class="sky" viewBox="0 0 900 1200" preserveAspectRatio="none">
+        <!-- 보라 칸: 성벽 윗선까지 -->
+        <path
+          d="M0 0 H900 V610 H842 V560 H790 V650 H730 V590 H676 V700 H600 V620 H548 V575 H486 V672 H420 V600 H360 V690 H296 V632 H238 V560 H180 V668 H118 V612 H60 V700 H0 Z"
+          fill="#7a4dff"
+        />
+        <!-- 성벽: 먹색 띠(같은 울퉁불퉁한 선을 따라 두께 36) -->
+        <path
+          d="M0 700 H60 V612 H118 V668 H180 V560 H238 V632 H296 V690 H360 V600 H420 V672 H486 V575 H548 V620 H600 V700 H676 V590 H730 V650 H790 V560 H842 V610 H900 V646 H878 V596 H806 V686 H754 V626 H712 V736 H564 V656 H512 V611 H522 V708 H384 V636 H396 V726 H260 V668 H274 V596 H144 V704 H154 V648 H96 V736 H0 Z"
+          fill="#1c1c1c"
+        />
+        <!-- 경계 안팎의 일: 하늘 쪽 점(맡길 일)과 종이 쪽 점(판단할 일) -->
+        <circle cx="330" cy="520" r="14" fill="#fff" />
+        <circle cx="610" cy="470" r="14" fill="#fff" />
+        <circle cx="770" cy="510" r="14" fill="#fff" />
+        <circle cx="520" cy="780" r="14" fill="none" stroke="#1c1c1c" stroke-width="5" />
+        <circle cx="700" cy="800" r="14" fill="#1c1c1c" />
+      </svg>
+
+      <div class="top">
+        <div class="kicker">연구와 데이터로 읽는</div>
+        <div class="t1">AI에게<br />맡길 일,</div>
+      </div>
+      <div class="eng">THE JAGGED FRONTIER</div>
+      <div class="bottom">
+        <div class="t2">내가 판단할 일</div>
+        <div class="sub">AI와 일 잘하는 사람들의 감각</div>
+      </div>
+      <div class="foot">
+        <span class="kind">인사이트</span>
+        <span class="mark">99BOOKS</span>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = { paused: true, seek() {}, duration() { return 1; }, time() { return 0; }, totalDuration() { return 1; } };
+    </script>
+  </body>
+</html>

@@ -38,15 +38,6 @@ type Ctx = {
   readHref: string;
 };
 
-function Check() {
-  return (
-    <svg viewBox="0 0 20 20" className="h-6 w-6 shrink-0" aria-hidden>
-      <circle cx="10" cy="10" r="10" className="fill-accent" />
-      <path d="m5.5 10.2 3 3 6-6.4" fill="none" className="stroke-on-accent" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 function Lock() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-sub" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -112,13 +103,8 @@ function Hero({ ctx, block }: { ctx: Ctx; block: Extract<DetailBlock, { type: "h
 
   const text = (
     <div>
-      <p className="flex flex-wrap items-center gap-2.5">
-        <span className={`type-caption rounded-full px-3 py-1 ${band ? "bg-on-accent text-accent" : "bg-header text-white"}`}>
-          {ctx.kindLabel}
-        </span>
-        <span className={`type-label ${band ? "" : "text-sub"}`}>{[book.category, book.topic].filter(Boolean).join(", ")}</span>
-      </p>
-      <h1 className="type-display mt-4 text-balance">{book.title}</h1>
+      {/* 제목 위에 라벨을 두지 않는다. 종류·분야는 제목 아래 정보 줄에 쓴다 */}
+      <h1 className="type-display text-balance">{book.title}</h1>
       {lead && <p className={`type-body mt-4 max-w-2xl ${band ? "" : "text-sub"}`}>{lead}</p>}
       <p className={`type-small mt-4 ${band ? "" : "text-sub"}`}>{ctx.meta.join(" · ")}</p>
       <div className="mt-7">
@@ -162,10 +148,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="border-t border-line">
       <div className="mx-auto max-w-5xl px-5 py-10 lg:px-8 lg:py-14">
-        <h2 className="type-heading flex items-center gap-3 text-ink">
-          <span className="h-6 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
-          {title}
-        </h2>
+        <h2 className="type-heading text-balance text-ink">{title}</h2>
         <div className="mt-6">{children}</div>
       </div>
     </section>
@@ -177,8 +160,9 @@ function PagePreview({ page }: { page: ViewerPage }) {
   if (page.type === "chapter") {
     return (
       <div className="relative max-h-[30rem] overflow-hidden px-6 py-8 lg:px-12">
-        <p className="type-label text-accent-ink">CHAPTER {page.no}</p>
-        <p className="type-display mt-2 text-ink">{page.title}</p>
+        <p className="type-display text-balance text-ink">
+          <span className="text-accent-ink">{page.no}장</span> {page.title}
+        </p>
         <div className="mt-6 max-w-[42.5rem]">
           <Blocks blocks={page.blocks.slice(0, 6)} />
         </div>
@@ -209,14 +193,11 @@ function BlockView({ ctx, block }: { ctx: Ctx; block: DetailBlock }) {
     case "includes":
       return (
         <Section title={block.title}>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-x-10 border-t border-line sm:grid-cols-2">
             {block.items.map((it) => (
-              <li key={it.name} className="flex gap-3 rounded-2xl border border-line p-5">
-                <Check />
-                <div>
-                  <p className="type-title text-ink">{it.name}</p>
-                  <p className="type-small mt-1 text-sub">{it.desc}</p>
-                </div>
+              <li key={it.name} className="border-b border-line py-4">
+                <p className="type-title text-ink">{it.name}</p>
+                <p className="type-small mt-1 text-sub">{it.desc}</p>
               </li>
             ))}
           </ul>
@@ -226,10 +207,10 @@ function BlockView({ ctx, block }: { ctx: Ctx; block: DetailBlock }) {
     case "for-whom":
       return (
         <Section title={block.title}>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex max-w-3xl flex-col border-t border-line">
             {block.items.map((it) => (
-              <li key={it} className="type-body flex items-center gap-3 rounded-2xl bg-panel px-5 py-4 text-ink">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden />
+              <li key={it} className="type-body flex gap-3 border-b border-line py-4 text-ink">
+                <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
                 {it}
               </li>
             ))}
@@ -446,6 +427,7 @@ export default function DetailPage({ book }: { book: Book }) {
     kindLabel: kind.label,
     cover: book.cover ?? (coverSlide?.type === "cover" ? coverSlide.preview : undefined),
     meta: [
+      [kind.label, book.category, book.topic].filter(Boolean).join(" · "),
       `${book.minutes}분`,
       chapters > 0 ? `챕터 ${chapters}개` : `슬라이드 ${book.slides.length}장`,
       `추가 비용 ${book.extraCost}`,

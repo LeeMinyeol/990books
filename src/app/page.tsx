@@ -2,9 +2,9 @@ import Link from "next/link";
 import { getShelf } from "@/books/content";
 import { getColumns } from "@/columns";
 import BookShelf from "@/components/home/BookShelf";
-import HeroCarousel from "@/components/home/HeroCarousel";
 import SiteFooter from "@/components/home/SiteFooter";
 import SiteHeader from "@/components/home/SiteHeader";
+import StoreFront from "@/components/home/StoreFront";
 import { formatDate } from "@/lib/pricing";
 
 /** 홈에 보여주는 최근 칼럼 수 */
@@ -17,8 +17,7 @@ export default function Home() {
     <div className="flex min-h-dvh flex-col">
       <SiteHeader current="books" />
       <main className="flex-1">
-        <h1 className="sr-only">99BOOKS, 따라 하면 결과물 하나가 나오는 웹 전자책</h1>
-        <HeroCarousel items={shelf.filter((item) => item.status === "open" && !item.draft)} />
+        <StoreFront books={shelf.filter((item) => item.status === "open")} hasColumns={columns.length > 0} />
         <BookShelf items={shelf} />
 
         {/* 오늘의 칼럼: 글이 있을 때만 보인다 */}

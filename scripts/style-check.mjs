@@ -4,6 +4,7 @@
 // 사용법
 //   node scripts/style-check.mjs <파일> --type column   오늘의 칼럼 (.md, .txt)
 //   node scripts/style-check.mjs <파일> --type deep     전자책 긴 글형 챕터 (.md, .txt)
+//   node scripts/style-check.mjs <파일> --type page     사이트 안내 페이지 (src/site/*.md)
 //   node scripts/style-check.mjs <book.json> --type slide   전자책 슬라이드형
 //
 // 불합격(✗)이 하나라도 있으면 종료 코드 1로 끝난다. 주의(△)는 사람이 판단한다.
@@ -15,6 +16,8 @@ import { PLACEHOLDER, countEmoji, ending, scanPhrases, splitSentences } from "./
 const LIMITS = {
   column: { avgMax: 45, longMax: 15, paraMax: 10, charsMin: 1000, charsMax: 3000, headMin: 3, headMax: 7, emojiMax: 2 },
   deep: { avgMax: 45, longMax: 12, paraMax: 10, charsMin: 2000, charsMax: 4500, headMin: 5, headMax: 8, emojiMax: 0 },
+  // 소개·이용 안내 같은 사이트 안내 페이지(src/site/*.md). 짧아도 되지만 문장 규칙은 같다
+  page: { avgMax: 45, longMax: 15, paraMax: 10, charsMin: 300, charsMax: 3000, headMin: 2, headMax: 8, emojiMax: 0 },
 };
 const HAEYO_MIN = 75; // 평서문 중 해요체
 const HAMNIDA_MAX = 20; // 평서문 중 "~습니다"
@@ -124,8 +127,8 @@ function checkSlides(raw) {
 const args = process.argv.slice(2);
 const file = args.find((a) => !a.startsWith("--") && a !== args[args.indexOf("--type") + 1]);
 const type = args.includes("--type") ? args[args.indexOf("--type") + 1] : null;
-if (!file || !["column", "deep", "slide"].includes(type)) {
-  console.error("사용법: node scripts/style-check.mjs <파일> --type column|deep|slide");
+if (!file || !["column", "deep", "page", "slide"].includes(type)) {
+  console.error("사용법: node scripts/style-check.mjs <파일> --type column|deep|page|slide");
   process.exit(2);
 }
 

@@ -6,7 +6,9 @@ import DetailPage from "@/components/detail/DetailPage";
 export const instant = false;
 
 export function generateStaticParams() {
-  return visibleBooks().map((b) => ({ slug: b.slug }));
+  const slugs = visibleBooks().map((b) => ({ slug: b.slug }));
+  // 공개된 책이 하나도 없어도 빌드가 멈추지 않게 한다(Cache Components는 1개 이상을 요구한다). 없는 주소는 404가 된다
+  return slugs.length ? slugs : [{ slug: "none" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/books/[slug]">): Promise<Metadata> {

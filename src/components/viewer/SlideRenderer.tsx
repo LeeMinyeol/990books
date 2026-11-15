@@ -102,7 +102,6 @@ export default function SlideRenderer({ slide, preview = false }: { slide: Slide
         <Body>
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="flex flex-col gap-4">
-              <span className="text-sm font-bold text-accent-ink">99BOOKS</span>
               <H1 className="font-title text-[1.9rem] leading-tight text-neutral-950 lg:text-5xl lg:leading-[1.2]">
                 {slide.title}
               </H1>
@@ -126,10 +125,7 @@ export default function SlideRenderer({ slide, preview = false }: { slide: Slide
     case "checklist":
       return (
         <Body>
-          <div className="flex flex-col gap-1">
-            <span className="text-sm font-bold text-accent-ink">준비물 체크</span>
-            <H2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</H2>
-          </div>
+          <H2 className="font-title text-3xl text-neutral-950 lg:text-4xl">{slide.title}</H2>
           <ul className="flex flex-col gap-3">
             {slide.items.map((it) => (
               <li

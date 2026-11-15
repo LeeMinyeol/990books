@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=900, height=1200" />
+    <style>
+      @font-face { font-family: "Pretendard"; font-weight: 400; src: url("assets/fonts/Pretendard-Regular.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 700; src: url("assets/fonts/Pretendard-Bold.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 800; src: url("assets/fonts/Pretendard-ExtraBold.woff2") format("woff2"); }
+      /* 책 색: 블루(accent) 바탕 + 먹색 + 종이색 */
+      :root { --blue: #2a64f5; --blue-deep: #1a3fa3; --ink: #1c1c1c; --paper: #f3efe6; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 900px; height: 1200px; overflow: hidden; background: var(--blue); }
+      body { font-family: "Pretendard", sans-serif; color: #fff; }
+      #root { position: relative; width: 900px; height: 1200px; overflow: hidden; background: var(--blue); }
+
+      .hook { position: absolute; left: 84px; top: 92px; font-size: 40px; }
+      .hook b { display: inline-block; background: var(--paper); color: var(--ink); padding: 2px 14px 4px; border-radius: 6px; font-weight: 800; }
+      .title { position: absolute; left: 78px; top: 160px; font-size: 124px; font-weight: 800; line-height: 1.1; letter-spacing: -0.055em; }
+      .title .em { color: var(--ink); background: var(--paper); padding: 0 14px; border-radius: 10px; margin-left: -14px; }
+      .eng { position: absolute; right: 52px; top: 96px; writing-mode: vertical-rl; font-size: 22px; font-weight: 700; letter-spacing: 0.32em; opacity: 0.85; }
+
+      /* 그림: 긴 문장 띠 한 줄을 가위로 잘라 짧은 문장 셋으로 */
+      .strip { position: absolute; height: 76px; background: var(--paper); color: var(--ink); border: 3px solid var(--ink); border-radius: 8px;
+               display: flex; align-items: center; padding: 0 22px; font-size: 30px; font-weight: 700; white-space: nowrap; letter-spacing: -0.02em;
+               box-shadow: 0 12px 20px -10px rgba(0,0,0,0.45); }
+      .long { left: -40px; top: 600px; width: 1000px; transform: rotate(-2deg); }
+      .long .cut { display: inline-block; width: 0; height: 110px; margin: 0 18px; border-left: 3px dashed var(--blue-deep); transform: translateY(0); }
+      .short b { display: inline-block; width: 14px; height: 14px; margin-left: 6px; border-radius: 50%; background: var(--blue); align-self: flex-end; margin-bottom: 22px; }
+      .s1 { left: 84px; top: 790px; transform: rotate(-3deg); }
+      .s2 { left: 300px; top: 880px; transform: rotate(2deg); }
+      .s3 { left: 150px; top: 970px; transform: rotate(-1.5deg); }
+      .scissors { position: absolute; overflow: visible; left: 560px; top: 700px; width: 240px; height: 240px; }
+
+      .foot { position: absolute; left: 84px; right: 84px; bottom: 54px; display: flex; justify-content: space-between; align-items: baseline;
+              border-top: 3px solid #fff; padding-top: 18px; font-size: 26px; }
+      .foot .promise { font-weight: 700; }
+      .foot .mark { font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1" data-width="900" data-height="1200">
+      <div class="hook"><b>AI로</b></div>
+      <div class="title">내 글<br /><span class="em">읽기 쉽게</span><br />고치기</div>
+      <div class="eng">SHORTER SENTENCES</div>
+
+      <div class="strip long">
+        일정이 밀렸고<span class="cut"></span>예산도 늘었으며<span class="cut"></span>담당자도 바뀌었기 때문에 그래서
+      </div>
+
+      <svg class="scissors" viewBox="0 0 220 220" fill="none">
+        <!-- 벌린 가위: 날 두 개가 왼쪽 위(자른 자리)를 향한다 -->
+        <path d="M112 118 L14 52 L22 40 L124 104 Z" fill="#f3efe6" stroke="#1c1c1c" stroke-width="6" stroke-linejoin="round" />
+        <path d="M112 118 L40 14 L54 8 L128 108 Z" fill="#f3efe6" stroke="#1c1c1c" stroke-width="6" stroke-linejoin="round" />
+        <path d="M118 112 L150 150" stroke="#1c1c1c" stroke-width="12" stroke-linecap="round" />
+        <path d="M118 112 L176 128" stroke="#1c1c1c" stroke-width="12" stroke-linecap="round" />
+        <circle cx="160" cy="172" r="28" stroke="#1c1c1c" stroke-width="12" fill="#f3efe6" />
+        <circle cx="196" cy="128" r="22" stroke="#1c1c1c" stroke-width="12" fill="#f3efe6" />
+        <circle cx="118" cy="112" r="7" fill="#1c1c1c" />
+      </svg>
+
+      <div class="strip short s1">일정이 밀렸어요<b></b></div>
+      <div class="strip short s2">예산도 늘었어요<b></b></div>
+      <div class="strip short s3">담당자도 바뀌었어요<b></b></div>
+
+      <div class="foot">
+        <span class="promise">긴 문장을 찾아 나누는 순서</span>
+        <span class="mark">99BOOKS</span>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = { paused: true, seek() {}, duration() { return 1; }, time() { return 0; }, totalDuration() { return 1; } };
+    </script>
+  </body>
+</html>

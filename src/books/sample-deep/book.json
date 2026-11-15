@@ -11,6 +11,18 @@
   "extraCost": "0원",
   "minutes": 20,
   "summary": "긴 글형 화면을 확인하려고 만든 샘플이에요. 챕터가 1개만 들어 있어요.",
+  "jacket": {
+    "hook": "AI로",
+    "title": [
+      "내 글",
+      "읽기 쉽게",
+      "고치기"
+    ],
+    "mark": 1,
+    "promise": "긴 문장을 찾아 나누는 순서",
+    "motif": "none",
+    "image": "/books/sample-deep/jacket.jpg"
+  },
   "detail": {
     "recipe": "D",
     "blocks": [

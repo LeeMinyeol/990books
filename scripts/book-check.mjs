@@ -75,7 +75,9 @@ check(steps.every((x, i) => x.step === i + 1), "단계 번호", steps.map((x) =>
 const cover = s[0];
 if (cover?.type === "cover") {
   check(cover.title === book.title, "표지 제목", "", "book.title 과 같아야 한다");
-  check(Boolean(cover.preview?.src), "표지 미리보기", cover.preview?.src ?? "없음", "완성 결과물 이미지를 넣는다");
+  // 인사이트 책은 결과물이 없으니 결과물 그림 대신 그림 표지(jacket.image)를 본다
+  if (book.kind === "deep") check(Boolean(book.jacket?.image), "그림 표지", book.jacket?.image ?? "없음", "인사이트 책은 jacket.image(그림 표지)를 넣는다");
+  else check(Boolean(cover.preview?.src), "표지 미리보기", cover.preview?.src ?? "없음", "완성 결과물 이미지를 넣는다");
   check(cover.chips?.length >= 2 && cover.chips.length <= 4, "표지 칩", `${cover.chips?.length ?? 0}개`, "2~4개 (걸리는 시간, 분량, 필요한 도구)");
 }
 const checklist = s[1];

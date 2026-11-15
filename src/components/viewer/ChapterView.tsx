@@ -70,8 +70,9 @@ export default function ChapterView({ page }: { page: ChapterPage }) {
       </aside>
 
       <article className="min-w-0 max-w-[42.5rem]">
-        <p className="type-label text-accent-ink">CHAPTER {page.no}</p>
-        <h1 className="type-display mt-2 text-balance text-ink">{page.title}</h1>
+        <h1 className="type-display text-balance text-ink">
+          <span className="text-accent-ink">{page.no}장</span> {page.title}
+        </h1>
 
         <details className="mt-5 rounded-2xl border border-line lg:hidden">
           <summary className="type-label flex min-h-11 cursor-pointer list-none items-center justify-between px-4 text-ink [&::-webkit-details-marker]:hidden">

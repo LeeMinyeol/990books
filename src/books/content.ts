@@ -121,6 +121,7 @@ function toShelfItem(book: Book): ShelfItem {
     ],
     writtenAt: checklist?.checkedAt,
     accent: book.accent,
+    onAccent: book.onAccent,
     cover: book.cover ?? cover?.preview,
     tools: book.tools,
     extraCost: book.extraCost,
@@ -128,6 +129,7 @@ function toShelfItem(book: Book): ShelfItem {
     slideCount: book.slides.length,
     chapterCount: chapters || undefined,
     rating: book.rating,
+    jacket: book.jacket,
     draft: book.draft || undefined,
   };
 }

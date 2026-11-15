@@ -12,8 +12,7 @@ export default function LockedView({ page, price, detailHref }: { page: LockedPa
   return (
     <div className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-8 px-6 py-8 lg:grid-cols-2 lg:gap-12 lg:px-14">
       <div>
-        <p className="type-label text-accent-ink">여기까지가 무료예요</p>
-        <h2 className="type-display mt-2 text-balance text-ink">남은 {page.remaining}장도 이어서 보세요</h2>
+        <h2 className="type-display text-balance text-ink">여기까지가 무료예요. 남은 {page.remaining}장도 이어서 보세요</h2>
         {page.inputs > 0 && (
           <p className="type-body mt-4 text-sub">
             남은 장에 복사해 쓰는 입력값 <b className="text-ink">{page.inputs}개</b>가 들어 있어요.

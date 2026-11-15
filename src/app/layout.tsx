@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "99BOOKS",
-  description: "따라 하면 결과물 하나가 나오는 웹 전자책",
+  description: "필요한 만큼만 읽는 작은 웹 책방. 따라 하기 책과 인사이트 책을 웹에서 읽어요.",
 };
 
 export const viewport: Viewport = {

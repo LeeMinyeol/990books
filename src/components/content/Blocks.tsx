@@ -30,7 +30,7 @@ function BlockView({ block }: { block: Block }) {
   switch (block.type) {
     case "h2":
       return (
-        <h2 id={block.id} className="type-heading mt-8 scroll-mt-6 border-l-4 border-accent pl-3 text-ink first:mt-0">
+        <h2 id={block.id} className="type-heading mt-10 scroll-mt-6 text-balance text-ink first:mt-0">
           {block.text}
         </h2>
       );
@@ -112,7 +112,7 @@ function BlockView({ block }: { block: Block }) {
               return (
                 <div
                   key={r}
-                  className={`rounded-2xl px-4 py-3 ${good ? "border-l-4 border-accent bg-accent-soft" : "border border-line bg-panel"} ${
+                  className={`rounded-2xl px-4 py-3 ${good ? "border border-accent bg-accent-soft" : "border border-line bg-panel"} ${
                     good && r > 0 ? "-mt-1" : ""
                   } ${!good && r > 0 ? "mt-3" : ""}`}
                 >
@@ -149,7 +149,8 @@ function BlockView({ block }: { block: Block }) {
               {block.rows.map((row, r) => (
                 <tr key={r} className="border-t border-line align-top">
                   {row.map((cell, c) => (
-                    <td key={c} className="min-w-24 px-4 py-3">
+                    // 좁은 화면에서 긴 칸이 한 글자씩 꺾이지 않게 칸마다 최소 폭을 둔다(넘치면 표를 옆으로 민다)
+                    <td key={c} className="min-w-40 px-4 py-3">
                       <Rich text={cell} />
                     </td>
                   ))}

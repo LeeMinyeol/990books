@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=900, height=1200" />
+    <style>
+      @font-face { font-family: "Pretendard"; font-weight: 400; src: url("assets/fonts/Pretendard-Regular.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 700; src: url("assets/fonts/Pretendard-Bold.woff2") format("woff2"); }
+      @font-face { font-family: "Pretendard"; font-weight: 800; src: url("assets/fonts/Pretendard-ExtraBold.woff2") format("woff2"); }
+      /* 책 색: 오렌지(accent) + 먹색 + 종이색 */
+      :root { --orange: #ff6a33; --orange-deep: #c8440f; --ink: #1c1c1c; --paper: #f3efe6; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 900px; height: 1200px; overflow: hidden; background: var(--paper); }
+      body { font-family: "Pretendard", sans-serif; color: var(--ink); }
+      #root { position: relative; width: 900px; height: 1200px; overflow: hidden; background: var(--paper); }
+
+      .hook { position: absolute; left: 84px; top: 92px; font-size: 40px; }
+      .hook b { display: inline-block; background: var(--ink); color: var(--paper); padding: 2px 14px 4px; border-radius: 6px; font-weight: 800; letter-spacing: -0.02em; }
+      .title { position: absolute; left: 78px; top: 160px; font-size: 124px; font-weight: 800; line-height: 1.04; letter-spacing: -0.055em; }
+      .title .em { color: var(--orange-deep); }
+      .eng { position: absolute; right: 52px; top: 96px; writing-mode: vertical-rl; font-size: 22px; font-weight: 700; letter-spacing: 0.32em; color: var(--orange-deep); }
+
+      /* 그림: 한 달 계획표. 칸 하나가 게시물 하나 */
+      .cal { position: absolute; left: 151px; top: 568px; width: 598px; padding: 0 24px 24px; background: #fff; border: 3px solid var(--ink); border-radius: 18px;
+             transform: rotate(-3deg); box-shadow: 0 16px 28px -14px rgba(28,28,28,0.35); }
+      .cal .head { height: 56px; margin: 0 -24px 18px; padding: 0 24px; background: var(--orange); border-bottom: 3px solid var(--ink); border-radius: 15px 15px 0 0;
+                   display: flex; align-items: center; justify-content: space-between; font-size: 26px; font-weight: 800; }
+      .grid { display: grid; grid-template-columns: repeat(7, 70px); gap: 10px; }
+      .cell { position: relative; width: 70px; height: 70px; border: 2.5px solid var(--ink); border-radius: 10px; overflow: hidden; background: #fff; }
+      .cell .n { position: absolute; left: 6px; top: 3px; font-size: 14px; font-weight: 800; }
+      .cell.photo { background: var(--orange); }
+      .cell.photo::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 12px; height: 22px;
+                           clip-path: polygon(0 100%, 35% 20%, 55% 60%, 72% 35%, 100% 100%); background: var(--ink); }
+      .cell.text i { position: absolute; left: 10px; height: 6px; border-radius: 3px; background: #d9d4c9; }
+      .cell.text i:nth-of-type(1) { top: 30px; right: 10px; }
+      .cell.text i:nth-of-type(2) { top: 44px; right: 22px; }
+      .cell.reel::after { content: ""; position: absolute; left: 27px; top: 26px; border-left: 20px solid var(--ink); border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+      .stamp { position: absolute; right: 70px; top: 440px; width: 150px; height: 150px; border-radius: 50%; background: var(--ink); color: var(--paper);
+               display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(10deg); }
+      .stamp b { font-size: 64px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+      .stamp span { margin-top: 4px; font-size: 22px; font-weight: 700; }
+
+      .foot { position: absolute; left: 84px; right: 84px; bottom: 54px; display: flex; justify-content: space-between; align-items: baseline;
+              border-top: 3px solid var(--ink); padding-top: 18px; font-size: 26px; }
+      .foot .promise { font-weight: 700; }
+      .foot .mark { font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1" data-width="900" data-height="1200">
+      <div class="hook"><b>클로드로 뽑는</b></div>
+      <div class="title">인스타<br /><span class="em">한 달치</span><br />콘텐츠</div>
+      <div class="eng">30 DAYS OF POSTS</div>
+
+      <div class="cal">
+        <div class="head"><span>콘텐츠 계획표</span></div>
+        <div class="grid" id="grid"></div>
+      </div>
+      <div class="stamp"><b>30</b><span>일치</span></div>
+
+      <div class="foot">
+        <span class="promise">30일 계획표부터 캡션까지</span>
+        <span class="mark">99BOOKS</span>
+      </div>
+    </div>
+    <script>
+      // 30칸: 사진 게시물·글 카드·릴스를 섞어 한 달 계획표처럼 보이게
+      const kinds = ["photo", "text", "reel", "text", "photo", "text", "photo"];
+      const grid = document.getElementById("grid");
+      for (let d = 1; d <= 30; d++) {
+        const k = kinds[(d * 3 + Math.floor(d / 7)) % kinds.length];
+        const el = document.createElement("div");
+        el.className = "cell " + k;
+        el.innerHTML = '<span class="n">' + d + "</span>" + (k === "text" ? "<i></i><i></i>" : "");
+        grid.appendChild(el);
+      }
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = { paused: true, seek() {}, duration() { return 1; }, time() { return 0; }, totalDuration() { return 1; } };
+    </script>
+  </body>
+</html>

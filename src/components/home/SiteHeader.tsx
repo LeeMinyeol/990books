@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SoonButton from "./SoonButton";
 
 type Section = "books" | "columns";
 
@@ -40,14 +39,7 @@ export default function SiteHeader({ current }: { current?: Section }) {
             99BOOKS
           </Link>
           <Nav className="hidden sm:flex" current={current} />
-          <span className="ml-auto">
-            <SoonButton
-              message="로그인은 준비 중이에요"
-              className="type-label min-h-11 rounded-full bg-brand px-5 text-on-brand outline-offset-2 transition hover:brightness-110 active:scale-95 focus-visible:outline-2 focus-visible:outline-white"
-            >
-              로그인
-            </SoonButton>
-          </span>
+          {/* 로그인은 기능이 생길 때 이 자리에 넣는다(2026-11-15 디자인 점검: 작동하지 않는 버튼이 가장 눈에 띄던 문제) */}
         </div>
       </header>
       {/* 모바일에서는 메뉴를 헤더 아래 한 줄로 내린다(헤더와 달리 스크롤하면 올라간다) */}

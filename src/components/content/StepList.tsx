@@ -84,9 +84,15 @@ export default function StepList({ steps }: { steps: StepCardData[] }) {
                 <p className="type-body font-bold text-ink">{s.action}</p>
                 {s.visible}
                 {s.success.map((t, i) => (
-                  <p key={i} className="type-body rounded-xl border-l-4 border-accent bg-accent-soft px-4 py-3 text-ink">
-                    <span className="type-label mr-2 text-accent-ink">성공</span>
-                    {t}
+                  <p key={i} className="type-body flex gap-2.5 rounded-xl bg-accent-soft px-4 py-3 text-ink">
+                    <svg viewBox="0 0 20 20" className="mt-[0.2em] h-5 w-5 shrink-0" aria-hidden>
+                      <circle cx="10" cy="10" r="10" className="fill-accent" />
+                      <path d="m5.5 10.2 3 3 6-6.4" fill="none" className="stroke-on-accent" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>
+                      <span className="type-label mr-1.5 text-accent-ink">성공</span>
+                      {t}
+                    </span>
                   </p>
                 ))}
                 {s.trouble.length > 0 && (

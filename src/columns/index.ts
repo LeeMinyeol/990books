@@ -56,6 +56,15 @@ export function getColumns(): Column[] {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
+/** 검수 전 글까지 모두. 관리자 화면에서만 쓴다 */
+export function getAllColumns(): Column[] {
+  if (!existsSync(DIR)) return [];
+  return readdirSync(DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map(load)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
 export function getColumn(slug: string): Column | undefined {
   return getColumns().find((c) => c.slug === slug);
 }

@@ -5,7 +5,7 @@ import type { ChapterPage } from "@/lib/book";
 import Blocks from "@/components/content/Blocks";
 
 /**
- * 긴 글형 장(심화 가이드 챕터). 틀 안에서 세로로 스크롤해 읽는다.
+ * 긴 글형 장(긴 글형 책 챕터). 틀 안에서 세로로 스크롤해 읽는다.
  * PC는 왼쪽에 소제목 목차가 따라오고, 모바일은 접힌 목차를 맨 위에 둔다.
  */
 export default function ChapterView({ page }: { page: ChapterPage }) {

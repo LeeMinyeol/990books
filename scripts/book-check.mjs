@@ -24,10 +24,14 @@ const others = readdirSync(join("src", "books"), { withFileTypes: true })
 const palette = JSON.parse(readFileSync("src/lib/palette.json", "utf8")).colors;
 const prices = [...readFileSync("src/lib/pricing.ts", "utf8").matchAll(/price:\s*(\d+)/g)].map((m) => `${Number(m[1]).toLocaleString("ko-KR")}원`);
 
+// 2026-11-15: mini는 따라 하기(슬라이드형 또는 긴 글형), deep은 인사이트 책이다
+const HAS_CHAPTERS = existsSync(join("src", "books", slug, "chapters"));
 const SIZE = {
-  mini: { slides: [10, 15], inputs: 3, minutes: 30 },
+  mini: HAS_CHAPTERS
+    ? { chapters: [3, 7], chars: [8000, 25000], inputs: 3, format: "howto" }
+    : { slides: [10, 15], inputs: 3, minutes: 30 },
   kit: { slides: [25, 40], inputs: 8, minutes: 60 },
-  deep: { chapters: [5, 7], chars: [15000, 25000] },
+  deep: { chapters: [5, 7], chars: [15000, 25000], format: "insight" },
 };
 const IMAGE_MAX = 200 * 1024;
 const RATIO = 16 / 10;
@@ -111,7 +115,14 @@ if (rule?.chapters) {
   check(files.length >= rule.chapters[0] && files.length <= rule.chapters[1], "챕터 수", `${files.length}개`, `${rule.chapters[0]}~${rule.chapters[1]}개 (src/books/${slug}/chapters/NN-이름.md)`);
   const chars = files.reduce((n, f) => n + readFileSync(join(cdir, f), "utf8").replace(/\s/g, "").length, 0);
   check(chars >= rule.chars[0] && chars <= rule.chars[1], "전체 글자 수(공백 제외)", chars.toLocaleString(), `${rule.chars[0].toLocaleString()}~${rule.chars[1].toLocaleString()}자`);
-  const NEED = ["이 장을 마치면", "먼저 알아둘 것", "따라 하기", "자주 막히는 곳", "나쁜 예와 좋은 예", "점검표"];
+  // 따라 하기 장은 고정 6구역, 인사이트 장은 끝의 두 절(적용, 한 줄 요약)을 꼭 둔다
+  const NEED = rule.format === "insight"
+    ? ["내 일에 대입해 보기", "이 장의 한 줄"]
+    : ["이 장을 마치면", "먼저 알아둘 것", "따라 하기", "자주 막히는 곳", "나쁜 예와 좋은 예", "점검표"];
+  if (rule.inputs) {
+    const chapterBoxes = files.reduce((n, f) => n + (readFileSync(join(cdir, f), "utf8").match(/^```입력값 \d+/gm) || []).length, 0);
+    check(chapterBoxes >= rule.inputs, "복사해 쓰는 입력값", `${chapterBoxes}개`, `${rule.inputs}개 이상 (챕터 안의 "입력값 N" 박스)`);
+  }
   for (const f of files) {
     const text = readFileSync(join(cdir, f), "utf8");
     const missing = NEED.filter((h) => !new RegExp(`^##\\s+${h}`, "m").test(text));

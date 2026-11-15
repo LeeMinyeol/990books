@@ -42,9 +42,11 @@ const name = slug ?? basename(file).replace(/\.md$/, "");
 const units = []; // { where, text, isPrompt }
 let sourcesPath;
 let writtenAt = null;
+let bookKind = null;
 if (slug) {
   const dir = join("src", "books", slug);
   const book = JSON.parse(readFileSync(join(dir, "book.json"), "utf8"));
+  bookKind = book.kind;
   writtenAt = book.slides.find((s) => s.type === "checklist")?.checkedAt ?? null;
   book.slides.forEach((s, i) => {
     const where = `${i + 1}장`;
@@ -109,9 +111,11 @@ if (!existsSync(sourcesPath)) {
     const data = rows.slice(1).filter((r) => /https?:\/\//.test(r[urlAt] ?? ""));
     const domains = new Set(data.map((r) => r[urlAt].match(/https?:\/\/([^/\s)]+)/)[1].replace(/^www\./, "")));
     const official = data.filter((r) => /^공식/.test(r[kindAt])).length;
+    const primary = data.filter((r) => /^(공식|논문)/.test(r[kindAt])).length;
     const dated = data.filter((r) => /^\d{4}-\d{2}-\d{2}$/.test(r[dateAt]));
     add(domains.size >= MIN_SOURCES ? "ok" : "fail", "서로 다른 출처", `${domains.size}곳`, `${MIN_SOURCES}곳 이상 (같은 사이트는 1곳으로 센다)`);
-    if (slug) add(official >= 1 ? "ok" : "fail", "공식 자료", `${official}개`, '종류가 "공식 문서"인 출처가 1개 이상 (책은 도구를 다룬다)');
+    if (slug && bookKind === "deep") add(primary >= 1 ? "ok" : "fail", "1차 근거", `${primary}개`, '인사이트 책은 종류가 "논문" 또는 "공식 문서"인 출처가 1개 이상');
+    else if (slug) add(official >= 1 ? "ok" : "fail", "공식 자료", `${official}개`, '종류가 "공식 문서"인 출처가 1개 이상 (따라 하기 책은 도구를 다룬다)');
     else if (official === 0) add("warn", "공식 자료", "0개", "도구 사용법을 다루는 글이면 그 도구의 공식 문서가 있어야 한다. 검수자가 판단한다");
     add(dated.length === data.length && data.length > 0 ? "ok" : "fail", "확인일", `${dated.length}/${data.length}`, "모든 출처의 확인일 칸에 YYYY-MM-DD");
     if (writtenAt && dated.length) {

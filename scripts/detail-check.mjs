@@ -80,8 +80,8 @@ if (!d) {
     const outOfOrder = types.find((t) => { const i = order.indexOf(t, at + 1); if (i < 0) return true; at = i; return false; });
     check(!outOfOrder, `틀 ${d.recipe}의 순서`, outOfOrder ? `${outOfOrder} 의 자리가 틀렸거나 이 틀에 없는 블록` : "맞음", order.join(" → "));
   }
-  if (book.kind === "deep") check(d.recipe === "D", "심화 가이드의 틀", d.recipe, "심화 가이드는 D");
-  else check(d.recipe !== "D", "틀 선택", d.recipe, "D는 심화 가이드 전용");
+  if (book.kind === "deep") check(d.recipe === "D", "인사이트 책의 틀", d.recipe, "인사이트 책은 D");
+  else check(d.recipe !== "D", "틀 선택", d.recipe, "D는 인사이트 책 전용");
 
   // 같은 분야에서 바로 앞에 쓴 책과 틀·hero 모양이 둘 다 같으면 안 된다
   const when = (b) => b.slides.find((s) => s.type === "checklist")?.checkedAt ?? "";
@@ -113,7 +113,7 @@ if (!d) {
   const walk = (v, key) => (typeof v === "string" ? (!["type", "variant", "src"].includes(key) && strings.push(v)) : v && typeof v === "object" ? Object.entries(v).forEach(([k, x]) => walk(x, k)) : null);
   walk(d.blocks);
   const copy = strings.join("\n");
-  // 심화 가이드는 챕터 파일 안의 입력값 박스(```입력값 N)도 센다. 화면(src/books/content.ts)과 같은 방식이다
+  // 긴 글형 책은 챕터 파일 안의 입력값 박스(```입력값 N)도 센다. 화면(src/books/content.ts)과 같은 방식이다
   const cdir = join("src", "books", slug, "chapters");
   const chapterFiles = existsSync(cdir) ? readdirSync(cdir).filter((f) => f.endsWith(".md")) : [];
   const chapterInputs = chapterFiles.reduce((n, f) => n + (readFileSync(join(cdir, f), "utf8").match(/^```입력값/gm) ?? []).length, 0);

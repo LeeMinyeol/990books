@@ -1,6 +1,6 @@
 ---
 name: content-review
-description: 99BOOKS의 전자책, 심화 가이드 챕터, 오늘의 칼럼, 상세페이지 문구를 공개하기 전에, 또는 "검수해줘/사실 확인해줘/표절 아닌지 봐줘/올려도 되는지 봐줘"라는 요청을 받았을 때 사용한다.
+description: 99BOOKS의 전자책(따라 하기·인사이트), 긴 글형 챕터, 오늘의 칼럼, 상세페이지 문구를 공개하기 전에, 또는 "검수해줘/사실 확인해줘/표절 아닌지 봐줘/올려도 되는지 봐줘"라는 요청을 받았을 때 사용한다.
 ---
 
 # 콘텐츠 검수
@@ -44,7 +44,7 @@ description: 99BOOKS의 전자책, 심화 가이드 챕터, 오늘의 칼럼, �
 ```bash
 node scripts/review-prep.mjs --book <slug>
 ```
-글 한 편이면 `node scripts/review-prep.mjs --file <글.md> --type column`(심화 가이드 챕터는 `--type deep`)이다.
+글 한 편이면 `node scripts/review-prep.mjs --file <글.md> --type column`(긴 글형 챕터는 `--type deep`)이다.
 
 - 이후 단계의 결과는 모두 이 보고서에 적는다.
 - 본문을 고친 뒤 같은 명령을 다시 돌리면 보고서의 1번(자동 검사)만 새로 쓰인다. 나머지는 그대로 남는다.

@@ -20,7 +20,7 @@ export function visibleBooks(): Book[] {
   return books.filter((b) => !b.draft || SHOW_DRAFTS);
 }
 
-/** 심화 가이드의 챕터. 파일 이름 순서(01-, 02-)가 장 순서다 */
+/** 긴 글형 책의 챕터. 파일 이름 순서(01-, 02-)가 장 순서다 */
 export function loadChapters(slug: string): ChapterPage[] {
   const dir = join(process.cwd(), "src", "books", slug, "chapters");
   if (!existsSync(dir)) return [];

@@ -1,6 +1,6 @@
 ---
 name: writing-style
-description: 99BOOKS에 올라가는 글(전자책 슬라이드, 심화 가이드 챕터, 오늘의 칼럼, 표지·상세페이지 문구)을 새로 쓰거나 고칠 때, 또는 "문체 맞춰줘/읽기 쉽게 고쳐줘"라는 요청을 받았을 때 사용한다.
+description: 99BOOKS에 올라가는 글(전자책 슬라이드, 긴 글형 챕터, 오늘의 칼럼, 표지·상세페이지 문구)을 새로 쓰거나 고칠 때, 또는 "문체 맞춰줘/읽기 쉽게 고쳐줘"라는 요청을 받았을 때 사용한다.
 ---
 
 # 99BOOKS 문체 적용
@@ -16,8 +16,8 @@ description: 99BOOKS에 올라가는 글(전자책 슬라이드, 심화 가이�
 | 종류 | 검사기 type | 구조가 적힌 곳 |
 |---|---|---|
 | 오늘의 칼럼 | `column` | writing-style.md 4장 |
-| 전자책 슬라이드형 (미니북, 실전 키트) | `slide` | writing-style.md 5-1 |
-| 전자책 긴 글형 (심화 가이드 챕터) | `deep` | writing-style.md 5-2 |
+| 전자책 슬라이드형 (따라 하기 책) | `slide` | writing-style.md 5-1 |
+| 전자책 긴 글형 (긴 글형 따라 하기·인사이트 챕터) | `deep` | writing-style.md 5-2 |
 | 표지 문구 | `slide` (표지는 book.json 안에 있다) | writing-style.md 5-3, 7장 |
 | 상세페이지 문구 | 문체 검사기 대신 `node scripts/detail-check.mjs <slug>` | `detail-page` 스킬 |
 

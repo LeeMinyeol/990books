@@ -60,7 +60,7 @@ export type Slide =
   | NextSlide;
 
 /**
- * 긴 글형 장(심화 가이드 챕터). book.json에 쓰지 않는다.
+ * 긴 글형 장(긴 글형 책 챕터). book.json에 쓰지 않는다.
  * 서버가 src/books/<slug>/chapters/NN-이름.md를 읽어 만든다.
  */
 export type ChapterPage = {
@@ -139,7 +139,7 @@ export type DetailBlock =
   | { type: "next"; title: string };
 
 export type DetailSpec = {
-  /** 블록 순서의 틀. A 결과물 중심, B 문제 해결 중심, C 도구 입문 중심, D 심화 가이드 */
+  /** 블록 순서의 틀. A 결과물 중심, B 문제 해결 중심, C 도구 입문 중심, D 인사이트 */
   recipe: "A" | "B" | "C" | "D";
   blocks: DetailBlock[];
 };
@@ -171,7 +171,7 @@ export type ShelfItem = {
   extraCost?: string;
   minutes?: number;
   slideCount?: number;
-  /** 심화 가이드의 챕터 수. 있으면 카드에 슬라이드 수 대신 보여준다 */
+  /** 긴 글형 책의 챕터 수. 있으면 카드에 슬라이드 수 대신 보여준다 */
   chapterCount?: number;
   rating?: { average: number; count: number };
 };

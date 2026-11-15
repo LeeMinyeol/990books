@@ -114,7 +114,8 @@ export default function StepList({ steps }: { steps: StepCardData[] }) {
                   onChange={() => toggle(s.no)}
                   className="h-5 w-5 shrink-0 accent-(--accent)"
                 />
-                이 단계를 했어요
+                {/* 화면 읽기 도구가 몇 번째 단계인지 알 수 있게 번호를 넣는다 */}
+                {s.no}단계를 했어요
               </label>
             </li>
           );

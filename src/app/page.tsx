@@ -18,7 +18,7 @@ export default function Home() {
       <SiteHeader current="books" />
       <main className="flex-1">
         <h1 className="sr-only">99BOOKS, 따라 하면 결과물 하나가 나오는 웹 전자책</h1>
-        <HeroCarousel items={shelf.filter((item) => item.status === "open")} />
+        <HeroCarousel items={shelf.filter((item) => item.status === "open" && !item.draft)} />
         <BookShelf items={shelf} />
 
         {/* 오늘의 칼럼: 글이 있을 때만 보인다 */}

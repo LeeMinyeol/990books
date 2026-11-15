@@ -174,4 +174,6 @@ export type ShelfItem = {
   /** 긴 글형 책의 챕터 수. 있으면 카드에 슬라이드 수 대신 보여준다 */
   chapterCount?: number;
   rating?: { average: number; count: number };
+  /** 공개 전 책. 개발 화면 홈에서만 "공개 전" 배지를 달고 보인다 */
+  draft?: boolean;
 };

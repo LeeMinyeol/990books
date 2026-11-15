@@ -16,7 +16,9 @@ function Rich({ text }: { text: string }) {
   );
 }
 
-function ImageSlot({ image, className = "" }: { image: ImageRef; className?: string }) {
+function ImageSlot({ image, className = "" }: { image?: ImageRef; className?: string }) {
+  // 표지 그림이 없는 책(예: 인사이트 책)도 있다. 그림 자리를 비우지 않고 그리지 않는다
+  if (!image) return null;
   return (
     <div
       className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-dashed border-accent/50 bg-accent-soft ${className}`}

@@ -21,6 +21,9 @@ function CardBody({ item }: { item: ShelfItem }) {
             {kind.label}
           </span>
         )}
+        {item.draft && (
+          <span className="type-caption absolute right-3 top-3 rounded-full bg-brand px-3 py-1 text-on-brand">공개 전</span>
+        )}
       </div>
       <h3 className={`type-title mt-4 text-balance ${item.status === "coming" ? "text-sub" : "text-ink"}`}>
         {item.title}

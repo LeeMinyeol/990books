@@ -109,7 +109,9 @@ function toShelfItem(book: Book): ShelfItem {
     kind: book.kind,
     topic: book.topic,
     includes: [
-      chapters > 0 ? `따라 하며 읽는 챕터 ${chapters}개` : `따라 하기 슬라이드 ${book.slides.length}장`,
+      chapters > 0
+        ? book.kind === "deep" ? `읽는 챕터 ${chapters}개` : `따라 하며 읽는 챕터 ${chapters}개`
+        : `따라 하기 슬라이드 ${book.slides.length}장`,
       ...(inputs > 0 ? [`복사해 쓰는 입력값 ${inputs}개`] : []),
       ...(book.files ?? []),
     ],
@@ -122,13 +124,18 @@ function toShelfItem(book: Book): ShelfItem {
     slideCount: book.slides.length,
     chapterCount: chapters || undefined,
     rating: book.rating,
+    draft: book.draft || undefined,
   };
 }
 
-/** 홈 진열대: 공개된 책이 먼저, 준비 중인 책이 뒤에 온다. 공개 전 책(draft)은 넣지 않는다 */
+/**
+ * 홈 진열대: 공개된 책이 먼저, 준비 중인 책이 뒤에 온다.
+ * 공개 전 책(draft)은 실제 서비스에서는 넣지 않고, 개발 화면에서만 공개된 책 뒤에 "공개 전" 배지를 달고 넣는다.
+ */
 export function getShelf(): ShelfItem[] {
   return [
     ...books.filter((b) => !b.draft).map(toShelfItem),
+    ...(SHOW_DRAFTS ? books.filter((b) => b.draft).map(toShelfItem) : []),
     ...comingBooks.map((b): ShelfItem => ({ ...b, status: "coming" })),
   ];
 }

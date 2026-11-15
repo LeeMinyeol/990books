@@ -45,3 +45,9 @@ next-env.d.ts
 
 # 설정값 이름만 적은 예시 파일은 저장소에 올린다
 !.env.local.example
+
+# 움직이는 그림(HyperFrames) 작업 파일. 글꼴은 용량이 커서 올리지 않고, 만든 MP4만 public/에 올린다
+/motion/**/assets/fonts/
+/motion/**/.hyperframes/
+/motion/**/renders/
+/motion/**/node_modules/

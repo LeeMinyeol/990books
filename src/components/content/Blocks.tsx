@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import type { Block } from "@/lib/blocks";
 import PromptBox from "@/components/viewer/PromptBox";
+import MotionFigure from "./MotionFigure";
 
 /** **굵게**와 `글자 그대로`만 지원하는 가벼운 렌더러 */
 export function Rich({ text }: { text: string }): ReactNode {
@@ -112,6 +113,7 @@ function BlockView({ block }: { block: Block }) {
     case "prompt":
       return <PromptBox label={block.label} text={block.text} />;
     case "image":
+      if (block.image.src?.endsWith(".mp4")) return <MotionFigure src={block.image.src} alt={block.image.alt} />;
       return (
         <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-line bg-panel">
           {block.image.src ? (
@@ -140,7 +142,7 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-/** 긴 글 본문. 심화 가이드 챕터와 오늘의 칼럼이 같이 쓴다 */
+/** 긴 글 본문. 긴 글형 책 챕터와 오늘의 칼럼이 같이 쓴다 */
 export default function Blocks({ blocks }: { blocks: Block[] }) {
   return (
     <div className="flex flex-col gap-5">
